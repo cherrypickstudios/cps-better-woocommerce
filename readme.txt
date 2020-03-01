@@ -4,7 +4,7 @@ Donate link: https://www.cherrypickstudios.com/
 Tags: woocommerce, magyar, magyarország, webáruház, hungarian, hungary
 Requires at least: 5.1
 Tested up to: 5.3
-Stable tag: 1.1
+Stable tag: 1.2
 Requires PHP: 5.6
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -182,6 +182,13 @@ Figyelem! A nevek cseréje csak akkor történik meg, ha magyar nyelvre van áll
 A vezetéknevem visszafelé. ;)
 
 == Changelog ==
+
+= 1.2 =
+
+Release date: 2020-03-01
+
+- Changing texts for admin notifications.
+- Added re-branded images: banners, icons and logos.
 
 = 1.1 =
 

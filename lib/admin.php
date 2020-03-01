@@ -98,12 +98,12 @@ function cps_bwc_admin_notice__welcome() {
 	?>
 	<div data-dismissible="cps-bwc-notice-welcome-forever" class="notice notice-info is-dismissible">
 		<div style="padding: 20px;">
-			<img src="<?php echo CPS_BWC_PLUGIN_URL; ?>/assets/images/hucommerce-logo.png" alt="HuCommerce">
-			<p><strong>Köszönjük, hogy telepítetted a HuCommerce bővítményt!</strong></p>
-			<p>Első lépésként aktiváld a szükséges modulokat és nézd meg az egyes modulok egyedi beállításait!
-			<br>A HuCommerce beállításait a <a href="<?php admin_url(); ?>admin.php?page=cps-bwc-menu">CPS Plugins -> HuCommerce</a> menüpont alatt találod.</p>
-			<p><strong>FIGYELEM!</strong> Ez az értesítés a lezárást követően nem jelenik meg újra. Kérünk, hogy csatlakozz a Facebook csoportunkhoz és iratkozz fel a HuCommerce hírlevelünkre!</p>
-			<p><a href="https://hucommerce.us20.list-manage.com/subscribe?u=8e6a039140be449ecebeb5264&id=2f5c70bc50&EMAIL=<?php echo urlencode( $current_user->user_email ); ?>&FNAME=<?php echo urlencode( $current_user->user_firstname ); ?>&LNAME=<?php echo urlencode( $current_user->user_lastname ); ?>&URL=<?php echo urlencode( $home_url ); ?>" target="_blank" class="button button-secondary"><span class="dashicons dashicons-email" style="position: relative;top: 3px;left: -3px;"></span> Hírlevél feliratkozás</a> <a href="https://www.facebook.com/groups/HuCommerce.hu/" target="_blank" class="button button-primary"><span class="dashicons dashicons-facebook-alt" style="position: relative;top: 3px;left: -3px;"></span> Facebook csoport</a></p>
+			<img src="<?php echo CPS_BWC_PLUGIN_URL; ?>/assets/images/cps-bwc-logo.png" alt="CPS | Better WooCommerce" height="100" style="max-height: 100px;">
+			<p><strong><?php _e( 'Thank you for installing Better WooCommerce plugin!' ); ?></strong></p>
+			<p><?php _e( 'First step is to activate Better WooCommerce modules and set the individual module settings.' ); ?>
+			<br><?php _e( 'To activate the Better WooCommerce modules and adjust settings, go to this page' ); ?>: <a href="<?php admin_url(); ?>admin.php?page=cps-bwc-menu"><?php _e( 'CPS Plugins -> Better WooCommerce' ); ?></a></p>
+			<p><?php _e( '<strong>IMPORTANT!</strong> This notification will not show up again after you close it. Before do this, please subscribe to our newsletter and join the CPS Facebook group!' ); ?></p>
+			<p><a href="https://cherrypickstudios.us19.list-manage.com/subscribe?u=b132c87c5a57f861f7d81620e&id=27c28e2aca&EMAIL=<?php echo urlencode( $current_user->user_email ); ?>&FNAME=<?php echo urlencode( $current_user->user_firstname ); ?>&LNAME=<?php echo urlencode( $current_user->user_lastname ); ?>&URL=<?php echo urlencode( $home_url ); ?>" target="_blank" class="button button-secondary"><span class="dashicons dashicons-email" style="position: relative;top: 3px;left: -3px;"></span> <?php _e( 'Join CPS Newsletter' ); ?></a> <a href="https://www.facebook.com/groups/HuCommerce.hu/" target="_blank" class="button button-primary"><span class="dashicons dashicons-facebook-alt" style="position: relative;top: 3px;left: -3px;"></span> <?php _e( 'CPS Facebook group' ); ?></a></p>
 		</div>
 	</div>
 	<?php

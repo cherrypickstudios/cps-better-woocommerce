@@ -5,7 +5,7 @@ Plugin Name: CPS | Better WooCommerce
 Plugin URI: https://www.cherrypickstudios.com/
 Description: A better WooCommerce experience with a lot of useful extras.
 
-Version: 1.1
+Version: 1.2
 
 Author: CherryPickStudios
 Author URI: https://www.cherrypickstudios.com/
@@ -76,10 +76,9 @@ function cps_bwc_admin_notice__no_woocommerce() {
 	?>
 	<div class="notice notice-error">
 		<div style="padding: 20px;">
-			<img src="<?php echo CPS_BWC_PLUGIN_URL; ?>/images/hucommerce-logo.png" alt="HuCommerce">
-			<p>A HuCommerce bővítmény használatához mindenképpen aktiválnod kell először a WooCommerce bővítményt.
-			<br>Ha nem szeretnéd használni a WooCommerce bővítményt, akkor kapcsold ki a HuCommerce bővítményt is!</p>
-			<p>A WooCommerce aktiválásához vagy a HuCommerce kikapcsolásához kattints a <a href="<?php admin_url(); ?>plugins.php">Bővítmények</a> menüpontra.</p>
+			<img src="<?php echo CPS_BWC_PLUGIN_URL; ?>/assets/images/cps-bwc-logo.png" alt="CPS | Better WooCommerce" height="100" style="max-height: 100px;">
+			<p><?php _e( 'To use Better WooCommerce, you need to activate WooCommerce plugin first. If you don\'t want to use WooCommerce, please deactivate Better WooCommerce plugin also!', 'cps-better-woocommerce' ); ?></p>
+			<p><?php _e( 'To activate WooCommerce or deactivate Better WooCommerce, go to this page:', 'cps-better-woocommerce' ); ?> <a href="<?php admin_url(); ?>plugins.php"><?php _e( 'Plugins' ); ?></a></p>
 		</div>
 	</div>
 	<?php
