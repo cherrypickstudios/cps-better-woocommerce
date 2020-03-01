@@ -2,7 +2,7 @@
 
 // Code reference: https://stackoverflow.com/questions/52367826/custom-plus-and-minus-quantity-buttons-in-woocommerce-3
 
-function surbma_hc_plus_minus_scripts() {
+function cps_bwc_plus_minus_scripts() {
 	if ( is_product() || is_cart() ) {
 	?>
 	<script type="text/javascript">
@@ -54,9 +54,9 @@ function surbma_hc_plus_minus_scripts() {
 	<?php
 	}
 }
-add_action( 'wp_footer', 'surbma_hc_plus_minus_scripts', 999 );
+add_action( 'wp_footer', 'cps_bwc_plus_minus_scripts', 999 );
 
-function surbma_hc_plus_minus_button_styles() {
+function cps_bwc_plus_minus_button_styles() {
 	if ( is_product() || is_cart() ) { ?>
 <style id="hucommerce-style">
 	.quantity input::-webkit-outer-spin-button,
@@ -75,4 +75,4 @@ function surbma_hc_plus_minus_button_styles() {
 </style>
 	<?php }
 }
-add_action( 'wp_head', 'surbma_hc_plus_minus_button_styles', 999 );
+add_action( 'wp_head', 'cps_bwc_plus_minus_button_styles', 999 );

@@ -1,7 +1,7 @@
 <?php
 
-function surbma_hc_login_redirect( $redirect, $user ) {
-	$options = get_option( 'surbma_hc_fields' );
+function cps_bwc_login_redirect( $redirect, $user ) {
+	$options = get_option( 'cps_bwc_fields' );
 	$loginredirecturlValue = isset( $options['loginredirecturl'] ) ? $options['loginredirecturl'] : wc_get_page_permalink( 'shop' );
 
 	$redirect_page_id = url_to_postid( $redirect );
@@ -17,10 +17,10 @@ function surbma_hc_login_redirect( $redirect, $user ) {
 		return $loginredirecturlValue;
 	}
 }
-add_filter( 'woocommerce_login_redirect', 'surbma_hc_login_redirect', 10, 2 );
+add_filter( 'woocommerce_login_redirect', 'cps_bwc_login_redirect', 10, 2 );
 
-function surbma_hc_register_redirect( $var ) {
-	$options = get_option( 'surbma_hc_fields' );
+function cps_bwc_register_redirect( $var ) {
+	$options = get_option( 'cps_bwc_fields' );
 	$registrationredirecturlValue = isset( $options['registrationredirecturl'] ) ? $options['registrationredirecturl'] : wc_get_page_permalink( 'shop' );
 
 	if( $registrationredirecturlValue == '' ) {
@@ -29,4 +29,4 @@ function surbma_hc_register_redirect( $var ) {
 		return $registrationredirecturlValue;
 	}
 }
-add_filter( 'woocommerce_registration_redirect', 'surbma_hc_register_redirect', 10, 1 );
+add_filter( 'woocommerce_registration_redirect', 'cps_bwc_register_redirect', 10, 1 );

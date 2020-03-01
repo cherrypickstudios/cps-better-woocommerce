@@ -1,18 +1,18 @@
 <?php
 
-function surbma_hc_tax_number_scripts() {
-	$options = get_option( 'surbma_hc_fields' );
+function cps_bwc_tax_number_scripts() {
+	$options = get_option( 'cps_bwc_fields' );
 	$billingcompanycheckValue = isset( $options['billingcompanycheck'] ) ? $options['billingcompanycheck'] : 0;
 	if( is_checkout() && $billingcompanycheckValue == 0 ) {
-		wp_enqueue_script( 'surbma_hc_tax_number', SURBMA_HC_PLUGIN_URL . '/assets/js/taxnumber.js', array( 'jquery' ), SURBMA_HC_PLUGIN_VERSION_NUMBER, true );
+		wp_enqueue_script( 'cps_bwc_tax_number', CPS_BWC_PLUGIN_URL . '/assets/js/taxnumber.js', array( 'jquery' ), CPS_BWC_PLUGIN_VERSION_NUMBER, true );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'surbma_hc_tax_number_scripts' );
+add_action( 'wp_enqueue_scripts', 'cps_bwc_tax_number_scripts' );
 
 // Add new Company check and Tax number fields.
-function surbma_hc_tax_number_custom_billing_fields( $fields ) {
+function cps_bwc_tax_number_custom_billing_fields( $fields ) {
 	$fields['billing_tax_number'] = array(
-		'label' 		=> __( 'Tax number', 'surbma-magyar-woocommerce' ),
+		'label' 		=> __( 'Tax number', 'cps-better-woocommerce' ),
 		'required' 		=> true,
 		'class' 		=> array( 'form-row-wide' ),
 		'priority' 		=> 32,
@@ -20,7 +20,7 @@ function surbma_hc_tax_number_custom_billing_fields( $fields ) {
 	);
 	return $fields;
 }
-add_filter( 'woocommerce_billing_fields', 'surbma_hc_tax_number_custom_billing_fields' );
+add_filter( 'woocommerce_billing_fields', 'cps_bwc_tax_number_custom_billing_fields' );
 
 // add_action( 'woocommerce_checkout_process', function() {
 // 	if ( !$_POST['billing_tax_number'] )
@@ -52,14 +52,14 @@ add_filter( 'woocommerce_localisation_address_formats', function( $formats ) {
 // Replacement value for My Account page.
 add_filter( 'woocommerce_my_account_my_address_formatted_address', function( $address, $customer_id, $address_type ) {
 	$taxnumber = get_user_meta( $customer_id, 'billing_tax_number', true );
-	$address['tax_number'] = $address_type == 'billing' && $taxnumber != '' ? __( 'Tax number', 'surbma-magyar-woocommerce' ) . ': ' . $taxnumber : null;
+	$address['tax_number'] = $address_type == 'billing' && $taxnumber != '' ? __( 'Tax number', 'cps-better-woocommerce' ) . ': ' . $taxnumber : null;
 	return $address;
 }, 10, 3 );
 
 // Replacement value for Billing address on Thank you page.
 add_filter( 'woocommerce_order_formatted_billing_address', function( $address, $wc_order ) {
 	$taxnumber = $wc_order->get_meta( '_billing_tax_number' );
-	$address['tax_number'] = $taxnumber != '' ? __( 'Tax number', 'surbma-magyar-woocommerce' ) . ': ' . $taxnumber : null;
+	$address['tax_number'] = $taxnumber != '' ? __( 'Tax number', 'cps-better-woocommerce' ) . ': ' . $taxnumber : null;
 	return $address;
 }, 10, 2 );
 
@@ -71,7 +71,7 @@ add_filter( 'woocommerce_order_formatted_shipping_address', function( $address )
 
 // Replacement value for Billing & Shipping address on Thank you page.
 // add_filter( 'woocommerce_get_order_address', function( $address, $type, $order ) {
-// 	$address['tax_number'] = __( 'Tax number', 'surbma-magyar-woocommerce' ) . ': ' . $order->get_meta( '_billing_tax_number' );
+// 	$address['tax_number'] = __( 'Tax number', 'cps-better-woocommerce' ) . ': ' . $order->get_meta( '_billing_tax_number' );
 // 	return $address;
 // }, 10, 3 );
 
@@ -85,7 +85,7 @@ add_filter( 'woocommerce_formatted_address_replacements', function( $replacement
 // Adding Tax number to user profile.
 add_filter( 'woocommerce_customer_meta_fields', function( $profileFieldArray ) {
 	$fieldData = array(
-		'label'			=> __( 'Tax number', 'surbma-magyar-woocommerce' ),
+		'label'			=> __( 'Tax number', 'cps-better-woocommerce' ),
 		'description'   => ''
 	);
 	$profileFieldArray['billing']['fields']['billing_tax_number'] = $fieldData;

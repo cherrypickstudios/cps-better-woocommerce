@@ -1,4 +1,4 @@
-HuCommerce - Magyar WooCommerce kiegészítések
-=============================================
+CPS | Better WooCommerce
+========================
 
-Hasznos javítások a magyar WooCommerce webáruházakhoz.
+A better WooCommerce experience with a lot of useful extras.

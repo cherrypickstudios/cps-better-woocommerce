@@ -1,9 +1,9 @@
 <?php
 
 // Code reference: https://businessbloomer.com/woocommerce-add-need-spend-x-get-free-shipping-cart-page/
-function surbma_hc_free_shipping_cart_notice() {
-	$options = get_option( 'surbma_hc_fields' );
-	$freeshippingnoticemessageValue = isset( $options['freeshippingnoticemessage'] ) && ( $options['freeshippingnoticemessage'] != '' ) ? $options['freeshippingnoticemessage'] : __( 'The remaining amount to get FREE shipping', 'surbma-magyar-woocommerce' );
+function cps_bwc_free_shipping_cart_notice() {
+	$options = get_option( 'cps_bwc_fields' );
+	$freeshippingnoticemessageValue = isset( $options['freeshippingnoticemessage'] ) && ( $options['freeshippingnoticemessage'] != '' ) ? $options['freeshippingnoticemessage'] : __( 'The remaining amount to get FREE shipping', 'cps-better-woocommerce' );
 	global $woocommerce;
 
 	// Get Free Shipping Methods for Rest of the World Zone & populate array $min_amounts
@@ -44,4 +44,4 @@ function surbma_hc_free_shipping_cart_notice() {
 		wc_print_notice( $notice, 'notice' );
 	}
 }
-add_action( 'woocommerce_before_cart', 'surbma_hc_free_shipping_cart_notice' );
+add_action( 'woocommerce_before_cart', 'cps_bwc_free_shipping_cart_notice' );

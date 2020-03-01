@@ -1,7 +1,7 @@
 <?php
 
 // https://gist.github.com/mikaelz/f41e29c6a99a595602e4
-function surbma_hc_cart_update_qty_script() {
+function cps_bwc_cart_update_qty_script() {
 	if( is_cart() ) { ?>
 <script>
 	jQuery('div.woocommerce').on('change', '.qty', function() {
@@ -11,4 +11,4 @@ function surbma_hc_cart_update_qty_script() {
 </script>
 <?php }
 }
-add_action( 'wp_footer', 'surbma_hc_cart_update_qty_script', 999 );
+add_action( 'wp_footer', 'cps_bwc_cart_update_qty_script', 999 );

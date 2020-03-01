@@ -1,7 +1,7 @@
 <?php
 
-function surbma_hc_legal_registration_fields() {
-	$options = get_option( 'surbma_hc_fields' );
+function cps_bwc_legal_registration_fields() {
+	$options = get_option( 'cps_bwc_fields' );
 	$regacceptppValue = isset( $options['regacceptpp'] ) ? stripslashes( $options['regacceptpp'] ) : 'Elolvastam és elfogadom az <a href="/adatkezeles/" target="_blank">Adatkezelési tájékoztatót</a>';
 
 	if( $regacceptppValue != '' ) {
@@ -14,20 +14,20 @@ function surbma_hc_legal_registration_fields() {
 	}
 }
 // A 20-asnál az adatkezelési tájékoztató szöveg fölé kerül a checkbox.
-add_action( 'woocommerce_register_form', 'surbma_hc_legal_registration_fields', 21 );
+add_action( 'woocommerce_register_form', 'cps_bwc_legal_registration_fields', 21 );
 
-function surbma_hc_legal_registration_fields_validation( $errors, $username, $email ) {
-	$options = get_option( 'surbma_hc_fields' );
+function cps_bwc_legal_registration_fields_validation( $errors, $username, $email ) {
+	$options = get_option( 'cps_bwc_fields' );
 
 	if ( !is_checkout() && isset( $options['regacceptpp'] ) && $options['regacceptpp'] != '' && !$_POST['reg_accept_pp'] )
 		$errors->add( 'reg_accept_pp_error', '<strong>Adatkezelési Tájékoztató</strong> elfogadása kötelező.' );
 	return $errors;
 }
-add_filter( 'woocommerce_registration_errors', 'surbma_hc_legal_registration_fields_validation', 10, 3 );
+add_filter( 'woocommerce_registration_errors', 'cps_bwc_legal_registration_fields_validation', 10, 3 );
 
 // Extra user metas to save after registration.
-function surbma_hc_legal_registration_fields_update_user_meta( $user_id ) {
-	$options = get_option( 'surbma_hc_fields' );
+function cps_bwc_legal_registration_fields_update_user_meta( $user_id ) {
+	$options = get_option( 'cps_bwc_fields' );
 
 	if( !empty( $_POST['reg_accept_pp'] ) )
 		update_user_meta( $user_id, 'reg_accept_pp', 1 );
@@ -53,10 +53,10 @@ function surbma_hc_legal_registration_fields_update_user_meta( $user_id ) {
 		update_user_meta( $user_id, 'reg_ip', $ip );
 	}
 }
-add_action( 'user_register', 'surbma_hc_legal_registration_fields_update_user_meta', 10, 1 );
+add_action( 'user_register', 'cps_bwc_legal_registration_fields_update_user_meta', 10, 1 );
 
 // Let's show the registration extra user meta values in admin.
-function surbma_hc_admin_reg_user_profile_fields( $profileuser ) {
+function cps_bwc_admin_reg_user_profile_fields( $profileuser ) {
 	$regacceptpp = get_the_author_meta( 'reg_accept_pp', $profileuser->ID ) == 1 ? 'Elfogadva' : 'Nincs elfogadva';
 	$regdate = date( "r", strtotime( $profileuser->user_registered ) ) != '' ? date( "r", strtotime( $profileuser->user_registered ) ) : 'Nincs dátum eltárolva';
 	$regip = get_the_author_meta( 'reg_ip', $profileuser->ID ) != '' ? get_the_author_meta( 'reg_ip', $profileuser->ID ) : 'Nincs IP cím eltárolva';
@@ -90,11 +90,11 @@ function surbma_hc_admin_reg_user_profile_fields( $profileuser ) {
 	</table>
 <?php
 }
-add_action( 'show_user_profile', 'surbma_hc_admin_reg_user_profile_fields', 20, 1 );
-add_action( 'edit_user_profile', 'surbma_hc_admin_reg_user_profile_fields', 20, 1 );
+add_action( 'show_user_profile', 'cps_bwc_admin_reg_user_profile_fields', 20, 1 );
+add_action( 'edit_user_profile', 'cps_bwc_admin_reg_user_profile_fields', 20, 1 );
 
 // Let's show the registration extra user meta values on front-end account page.
-function surbma_hc_woocommerce_reg_user_profile_fields() {
+function cps_bwc_woocommerce_reg_user_profile_fields() {
 	$user_id = get_current_user_id();
 	$user = get_userdata( $user_id );
 
@@ -123,16 +123,16 @@ function surbma_hc_woocommerce_reg_user_profile_fields() {
 	</fieldset>
 <?php
 }
-add_action( 'woocommerce_edit_account_form', 'surbma_hc_woocommerce_reg_user_profile_fields', 10 );
+add_action( 'woocommerce_edit_account_form', 'cps_bwc_woocommerce_reg_user_profile_fields', 10 );
 
-function surbma_hc_legal_checkout_fields( $checkout ) {
-	$options = get_option( 'surbma_hc_fields' );
+function cps_bwc_legal_checkout_fields( $checkout ) {
+	$options = get_option( 'cps_bwc_fields' );
 	$legalcheckouttitleValue = isset( $options['legalcheckouttitle'] ) ? $options['legalcheckouttitle'] : 'Vásárláshoz szükséges jogi megerősítések';
 	if( $legalcheckouttitleValue != '' ) $legalcheckouttitleValue = '<h3>' . $legalcheckouttitleValue . '</h3>';
 	$accepttosValue = isset( $options['accepttos'] ) ? stripslashes( $options['accepttos'] ) : 'Elolvastam és elfogadom az <a href="/aszf/" target="_blank">Általános Szerződési Feltételeket</a>';
 	$acceptppValue = isset( $options['acceptpp'] ) ? stripslashes( $options['acceptpp'] ) : 'Elolvastam és elfogadom az <a href="/adatkezeles/" target="_blank">Adatkezelési tájékoztatót</a>';
 
-	echo '<div id="surbma_hc_gdpr_checkout">' . $legalcheckouttitleValue;
+	echo '<div id="cps_bwc_gdpr_checkout">' . $legalcheckouttitleValue;
 
 	if( $accepttosValue != '' ) {
 		woocommerce_form_field( 'accept_tos', array(
@@ -154,10 +154,10 @@ function surbma_hc_legal_checkout_fields( $checkout ) {
 
 	echo '</div>';
 }
-add_action( 'woocommerce_after_order_notes', 'surbma_hc_legal_checkout_fields' );
+add_action( 'woocommerce_after_order_notes', 'cps_bwc_legal_checkout_fields' );
 
-function surbma_hc_legal_checkout_fields_validation() {
-	$options = get_option( 'surbma_hc_fields' );
+function cps_bwc_legal_checkout_fields_validation() {
+	$options = get_option( 'cps_bwc_fields' );
 
 	if ( isset( $options['accepttos'] ) && $options['accepttos'] != '' && !$_POST['accept_tos'] )
 		wc_add_notice( '<strong>Általános Szerződési Feltételek</strong> elfogadása kötelező.', 'error' );
@@ -165,17 +165,17 @@ function surbma_hc_legal_checkout_fields_validation() {
 	if ( isset( $options['acceptpp'] ) && $options['acceptpp'] != '' && !$_POST['accept_pp'] )
 		wc_add_notice( '<strong>Adatkezelési Tájékoztató</strong> elfogadása kötelező.', 'error' );
 }
-add_action( 'woocommerce_checkout_process', 'surbma_hc_legal_checkout_fields_validation' );
+add_action( 'woocommerce_checkout_process', 'cps_bwc_legal_checkout_fields_validation' );
 
-function surbma_hc_legal_checkout_fields_update_order_meta( $order_id ) {
+function cps_bwc_legal_checkout_fields_update_order_meta( $order_id ) {
 	if ( !empty( $_POST['accept_tos'] ) )
 		update_post_meta( $order_id, 'accept_tos', 'Elfogadva' );
 	if ( !empty( $_POST['accept_pp'] ) )
 		update_post_meta( $order_id, 'accept_pp', 'Elfogadva' );
 }
-add_action( 'woocommerce_checkout_update_order_meta', 'surbma_hc_legal_checkout_fields_update_order_meta' );
+add_action( 'woocommerce_checkout_update_order_meta', 'cps_bwc_legal_checkout_fields_update_order_meta' );
 
-function surbma_hc_legal_checkout_fields_display_admin_order_meta( $order ) {
+function cps_bwc_legal_checkout_fields_display_admin_order_meta( $order ) {
 	$accepttos = get_post_meta( $order->get_id(), 'accept_tos', true );
 	$acceptpp = get_post_meta( $order->get_id(), 'accept_pp', true );
 
@@ -184,20 +184,20 @@ function surbma_hc_legal_checkout_fields_display_admin_order_meta( $order ) {
 	if( $acceptpp )
 		echo '<p><strong>Adatkezelési Tájékoztató:</strong> ' . $acceptpp . '</p>';
 }
-add_action( 'woocommerce_admin_order_data_after_billing_address', 'surbma_hc_legal_checkout_fields_display_admin_order_meta', 10, 1 );
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'cps_bwc_legal_checkout_fields_display_admin_order_meta', 10, 1 );
 
-function surbma_hc_legal_checkout_before_submit() {
-	$options = get_option( 'surbma_hc_fields' );
+function cps_bwc_legal_checkout_before_submit() {
+	$options = get_option( 'cps_bwc_fields' );
 	$beforeorderbuttonmessageValue = isset( $options['beforeorderbuttonmessage'] ) ? stripslashes( $options['beforeorderbuttonmessage'] ) : null;
 	if ( $beforeorderbuttonmessageValue )
-		echo '<div class="surbma-hc-before-submit" style="margin: 0 0 1em;text-align: center;">' . $beforeorderbuttonmessageValue . '</div>';
+		echo '<div class="cps-bwc-before-submit" style="margin: 0 0 1em;text-align: center;">' . $beforeorderbuttonmessageValue . '</div>';
 }
-add_action( 'woocommerce_review_order_before_submit', 'surbma_hc_legal_checkout_before_submit' );
+add_action( 'woocommerce_review_order_before_submit', 'cps_bwc_legal_checkout_before_submit' );
 
-function surbma_hc_legal_checkout_after_submit() {
-	$options = get_option( 'surbma_hc_fields' );
+function cps_bwc_legal_checkout_after_submit() {
+	$options = get_option( 'cps_bwc_fields' );
 	$afterorderbuttonmessageValue = isset( $options['afterorderbuttonmessage'] ) ? stripslashes( $options['afterorderbuttonmessage'] ) : null;
 	if ( $afterorderbuttonmessageValue )
-		echo '<div class="surbma-hc-before-submit" style="margin: 1em 0 0;text-align: center;">' . $afterorderbuttonmessageValue . '</div>';
+		echo '<div class="cps-bwc-before-submit" style="margin: 1em 0 0;text-align: center;">' . $afterorderbuttonmessageValue . '</div>';
 }
-add_action( 'woocommerce_review_order_after_submit', 'surbma_hc_legal_checkout_after_submit' );
+add_action( 'woocommerce_review_order_after_submit', 'cps_bwc_legal_checkout_after_submit' );
