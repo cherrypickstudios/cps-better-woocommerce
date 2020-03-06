@@ -4,7 +4,7 @@ Donate link: https://www.cherrypickstudios.com/
 Tags: woocommerce, checkout, cart, gdpr, ccpa
 Requires at least: 5.1
 Tested up to: 5.3
-Stable tag: 1.3
+Stable tag: 1.4
 Requires PHP: 5.6
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -172,6 +172,12 @@ You can donate us for FREE here: [Surbma.com/Donate/](https://surbma.com/donate/
 The *CPS | Better WooCommerce* plugin settings are under the "CPS Plugins -> Better WooCommerce" menu item.
 
 == Changelog ==
+
+= 1.4 =
+
+Release date: 2020-03-06
+
+- Add new Plugin URI.
 
 = 1.3 =
 

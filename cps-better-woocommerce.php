@@ -2,10 +2,10 @@
 
 /*
 Plugin Name: CPS | Better WooCommerce
-Plugin URI: https://www.cherrypickstudios.com/
+Plugin URI: https://www.cherrypickstudios.com/plugins/better-woocommerce/
 Description: A better WooCommerce experience with a lot of useful extras.
 
-Version: 1.3
+Version: 1.4
 
 Author: CherryPickStudios
 Author URI: https://www.cherrypickstudios.com/
@@ -22,7 +22,7 @@ Domain Path: /languages/
 // Prevent direct access
 defined( 'ABSPATH' ) || exit;
 
-define( 'CPS_BWC_PLUGIN_VERSION_NUMBER', '1.3' );
+define( 'CPS_BWC_PLUGIN_VERSION_NUMBER', '1.4' );
 define( 'CPS_BWC_PLUGIN_DIR', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'CPS_BWC_PLUGIN_URL', plugins_url( '', __FILE__ ) );
 define( 'CPS_BWC_PLUGIN_FILE', __FILE__ );
