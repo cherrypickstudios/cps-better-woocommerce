@@ -4,7 +4,7 @@ Donate link: https://www.cherrypickstudios.com/
 Tags: woocommerce, checkout, cart, gdpr, ccpa
 Requires at least: 5.1
 Tested up to: 5.3
-Stable tag: 1.5
+Stable tag: 1.6
 Requires PHP: 5.6
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@ A better WooCommerce experience with a lot of useful extras.
 
 >A better WooCommerce experience with a lot of useful extras.
 
-WooCommerce is the most populat eCommerce platform in the world. It is the best eCommerce plugin for WordPress. These are all true, but how can it be better? With CPS | Better WooCommerce plugin you can add small things, that mean a lot! Enhance the overall user experience, get more conversion, increase the total sale and even comply with all the regulations (GDPR, CCPA, ePrivacy).
+WooCommerce is the most popular eCommerce platform in the world. It is the best eCommerce plugin for WordPress. These are all true, but how can it be better? With CPS | Better WooCommerce plugin you can add small things, that mean a lot! Enhance the overall user experience, get more conversion, increase the total sale and even comply with all the regulations (GDPR, CCPA, ePrivacy).
 
 New features are endlessly coming to CPS | Better WooCommerce plugin. Every new feature is disabled by default (this is not Jetpack, pff!) and modules are loading only, when they are active. So this plugin is very optimized and carefully programmed with the best practices.
 
@@ -172,6 +172,12 @@ You can donate us for FREE here: [Surbma.com/Donate/](https://surbma.com/donate/
 The *CPS | Better WooCommerce* plugin settings are under the "CPS Plugins -> Better WooCommerce" menu item.
 
 == Changelog ==
+
+= 1.6 =
+
+Release date: 2020-03-06
+
+- Fix typo.
 
 = 1.5 =
 
