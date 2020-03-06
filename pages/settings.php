@@ -1,51 +1,53 @@
 <?php
 
-function cps_bwc_fields_init() {
+add_action( 'admin_init', function() {
 	register_setting(
 		'cps_bwc_options',
 		'cps_bwc_fields',
 		'cps_bwc_fields_validate'
 	);
-}
-add_action( 'admin_init', 'cps_bwc_fields_init' );
+} );
 
-$returntoshop_cart_position_options = array(
+global $returntoshopcartposition_options;
+global $returntoshopcheckoutposition_options;
+
+$returntoshopcartposition_options = array(
 	'beforecarttable' => array(
 		'value' => 'beforecarttable',
-		'label' => 'Termék táblázat előtt (üzenettel)'
+		'label' => __( 'Before Product table (with text)', 'cps-better-woocommerce' )
 	),
 	'aftercarttable' => array(
 		'value' => 'aftercarttable',
-		'label' => 'Termék táblázat után (üzenettel)'
+		'label' => __( 'After Product table (with text)', 'cps-better-woocommerce' )
 	),
 	'cartactions' => array(
 		'value' => 'cartactions',
-		'label' => 'Kosár frissítése gomb mellett (üzenet nélkül)'
+		'label' => __( 'Next to Update cart button (without text)', 'cps-better-woocommerce' )
 	),
 	'proceedtocheckout' => array(
 		'value' => 'proceedtocheckout',
-		'label' => 'Tovább a pénztárhoz gomb után (üzenet nélkül)'
+		'label' => __( 'Under Proceed to checkout button (without text)', 'cps-better-woocommerce' )
 	)
 );
 
-$returntoshop_checkout_position_options = array(
+$returntoshopcheckoutposition_options = array(
 	'nocheckout' => array(
 		'value' => 'nocheckout',
-		'label' => 'A Pénztár oldalon ne jelenjen meg'
+		'label' => __( 'Don\'t show on Checkout page', 'cps-better-woocommerce' )
 	),
 	'beforecheckoutform' => array(
 		'value' => 'beforecheckoutform',
-		'label' => 'Pénztár űrlap előtt (üzenettel)'
+		'label' => __( 'Before Checkout form (with text)', 'cps-better-woocommerce' )
 	),
 	'aftercheckoutform' => array(
 		'value' => 'aftercheckoutform',
-		'label' => 'Pénztár űrlap után (üzenettel)'
+		'label' => __( 'After Checkout form (with text)', 'cps-better-woocommerce' )
 	)
 );
 
 function cps_bwc_settings_page() {
-	global $returntoshop_cart_position_options;
-	global $returntoshop_checkout_position_options;
+	global $returntoshopcartposition_options;
+	global $returntoshopcheckoutposition_options;
 
 	$freeNotification = '<p class="uk-text-meta uk-text-center">Ezek a modulok a bővítmény PRO kiegészítőjével érhetők el, amelyet külön kell megvásárolni a bővítményhez.</p>';
 
@@ -68,27 +70,12 @@ function cps_bwc_settings_page() {
 
 					<div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-bottom">
 						<div class="uk-card-header uk-background-muted">
-							<h3 class="uk-card-title">HuCommerce modulok <a class="uk-float-right uk-margin-small-top" uk-icon="icon: more-vertical" uk-toggle="target: #hc-modules"></a></h3>
+							<h3 class="uk-card-title"><?php _e( 'Better WooCommerce modules', 'cps-better-woocommerce' ); ?> <a class="uk-float-right uk-margin-small-top" uk-icon="icon: more-vertical" uk-toggle="target: #hc-modules"></a></h3>
 						</div>
 						<div id="hc-modules" class="uk-card-body">
 
 							<div class="uk-margin">
-								<div class="uk-form-label">Magyar formátum javítások <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: A keresztnév és vezetéknév sorrendjének a megfordítása a Pénztár oldalon akkor, ha a webáruház magyar nyelvű. Megye mező elrejtése ha a cím Magyarország.; pos: right"></span></div>
-								<div class="uk-form-controls">
-									<p class="switch-wrap">
-										<label class="switch">
-											<?php $huformatfixValue = isset( $options['huformatfix'] ) ? $options['huformatfix'] : 1; ?>
-											<input id="cps_bwc_fields[huformatfix]" name="cps_bwc_fields[huformatfix]" type="checkbox" value="1" <?php checked( '1', $huformatfixValue ); ?> />
-											<span class="slider round"></span>
-										</label>
-									</p>
-								</div>
-							</div>
-
-							<hr>
-
-							<div class="uk-margin">
-								<div class="uk-form-label">Pénztár oldal <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: Pénztár oldali mezők és egyéb funkciók módosításai.; pos: right"></span></div>
+								<div class="uk-form-label"><?php _e( 'Checkout page customizations', 'cps-better-woocommerce' ); ?> <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: <?php _e( 'Extra fields and other customizations on the Checkout page', 'cps-better-woocommerce' ); ?>; pos: right"></span></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
 										<label class="switch">
@@ -103,7 +90,7 @@ function cps_bwc_settings_page() {
 							<hr>
 
 							<div class="uk-margin">
-								<div class="uk-form-label">Plusz/minusz mennyiségi gombok <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: A mennyiség mezőnél megjelenít egy plusz/minusz gombot, amivel lehet módosítani a mennyiséget.; pos: right"></span></div>
+								<div class="uk-form-label"><?php _e( 'Plus/minus quantity buttons', 'cps-better-woocommerce' ); ?> <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: <?php _e( 'Shows plus/minus quantity buttons for products.', 'cps-better-woocommerce' ); ?>; pos: right"></span></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
 										<label class="switch">
@@ -118,7 +105,7 @@ function cps_bwc_settings_page() {
 							<hr>
 
 							<div class="uk-margin">
-								<div class="uk-form-label">Kosár automatikus frissítése darabszám módosítás után <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: A kosár oldalon, ha megváltozik a termék mennyisége, akkor automatikusan frissíti a kosarat. Nincs szükség a kosár frissítése gomb megnyomására.; pos: right"></span></div>
+								<div class="uk-form-label"><?php _e( 'Automatic Cart update', 'cps-better-woocommerce' ); ?> <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: <?php _e( 'It will automatically update the cart, when customer changes the quantity on the Cart page.', 'cps-better-woocommerce' ); ?>; pos: right"></span></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
 										<label class="switch">
@@ -133,7 +120,7 @@ function cps_bwc_settings_page() {
 							<hr>
 
 							<div class="uk-margin">
-								<div class="uk-form-label">Vásárlás folytatása gombok <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: Egy gombot helyez el a Kosár és/vagy a Pénztár oldalon, amivel folytathatja a látogató a vásárlást. A gomb az üzlet oldalra viszi a látogatót.; pos: right"></span></div>
+								<div class="uk-form-label"><?php _e( 'Continue shopping buttons', 'cps-better-woocommerce' ); ?> <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: <?php _e( 'A Continue shopping button on Cart and/or Checkout pages, that will bring customer to Shop page.', 'cps-better-woocommerce' ); ?>; pos: right"></span></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
 										<label class="switch">
@@ -148,7 +135,7 @@ function cps_bwc_settings_page() {
 							<hr>
 
 							<div class="uk-margin">
-								<div class="uk-form-label">Belépés és regisztráció utáni átirányítás <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: Beállítható, hogy a látogatók a belépés és regisztráció után a meghatározott oldalra legyenek automatikusan átirányítva.; pos: right"></span></div>
+								<div class="uk-form-label"><?php _e( 'Login and registration redirection', 'cps-better-woocommerce' ); ?> <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: <?php _e( 'Set custom landing pages after login and/or registration.', 'cps-better-woocommerce' ); ?>; pos: right"></span></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
 										<label class="switch">
@@ -163,7 +150,7 @@ function cps_bwc_settings_page() {
 							<hr>
 
 							<div class="uk-margin">
-								<div class="uk-form-label">Ingyenes szállítás értesítés <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: A Kosár oldalon kijelzi, hogy mennyi vásárlási összeg hiányzik még az ingyenes szállításhoz.; pos: right"></span></div>
+								<div class="uk-form-label"><?php _e( 'Free shipping notification', 'cps-better-woocommerce' ); ?> <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: <?php _e( 'A notification on the Cart page to let customer know, how much total purchase is missing to get free shipping.', 'cps-better-woocommerce' ); ?>; pos: right"></span></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
 										<label class="switch">
@@ -178,28 +165,7 @@ function cps_bwc_settings_page() {
 							<hr>
 
 							<div class="uk-margin">
-								<div class="uk-form-label">Adószám megjelenítése <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: A vásárlásnál nem csak a Cégnevet, hanem Adószámot is meg lehet adni.; pos: right"></span></div>
-								<div class="uk-form-controls">
-									<p class="switch-wrap">
-										<label class="switch">
-											<?php $taxnumberValue = isset( $options['taxnumber'] ) ? $options['taxnumber'] : 0; ?>
-											<input id="cps_bwc_fields[taxnumber]" name="cps_bwc_fields[taxnumber]" type="checkbox" value="1" <?php checked( '1', $taxnumberValue ); ?> />
-											<span class="slider round"></span>
-										</label>
-									</p>
-									<?php if( $szamlazzhu_options['vat_number_form'] == 'yes' ) { ?>
-										<p class="uk-text-meta uk-text-right uk-text-warning"><span uk-icon="warning"></span> Az adószám mezőt a Szamlazz.hu bővítmény már megjeleníti a pénztár oldalon.</p>
-									<?php } ?>
-									<?php if( $billingo_options['vat_number_form'] == 'yes' ) { ?>
-										<p class="uk-text-meta uk-text-right uk-text-warning"><span uk-icon="warning"></span> Az adószám mezőt a Billingo bővítmény már megjeleníti a pénztár oldalon.</p>
-									<?php } ?>
-								</div>
-							</div>
-
-							<hr>
-
-							<div class="uk-margin">
-								<div class="uk-form-label">Jogi megfelelés (Fogyasztóvédelem, GDPR, ePrivacy, stb.) <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: Vásárlásnál meg kell erősítenie a vásárlónak, hogy elfogadja-e az Általános Szerződési Feltételeket és/vagy az Adatvédelmi tájékoztatót.; pos: right"></span></div>
+								<div class="uk-form-label"><?php _e( 'Legal compliance (GDPR, CCPA, ePrivacy)', 'cps-better-woocommerce' ); ?> <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: <?php _e( 'Custom Terms & Conditions and Privacy Policy checkboxes on Checkout page.', 'cps-better-woocommerce' ); ?>; pos: right"></span></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
 										<label class="switch">
@@ -211,55 +177,6 @@ function cps_bwc_settings_page() {
 								</div>
 							</div>
 
-							<hr>
-
-							<div class="uk-margin">
-								<div class="uk-form-label">Város automatikus kitöltése az irányítószám alapján <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: A Pénztár oldalon az irányítószám mező kitöltése után automatikusan megjeleníti a várost.; pos: right"></span></div>
-								<div class="uk-form-controls">
-									<p class="switch-wrap">
-										<label class="switch">
-											<?php $autofillcityValue = isset( $options['autofillcity'] ) ? $options['autofillcity'] : 0; ?>
-											<input id="cps_bwc_fields[autofillcity]" name="cps_bwc_fields[autofillcity]" type="checkbox" value="1" <?php checked( '1', $autofillcityValue ); ?> />
-											<span class="slider round"></span>
-										</label>
-									</p>
-								</div>
-							</div>
-
-							<hr>
-
-							<div class="uk-margin">
-								<div class="uk-form-label">Fordítási hiányosságok javítása <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: Ideiglenes fordítási hiányosságok javítása, amíg a hivatalos fordításban esetleg nem jelenik meg vagy nem frissíti a rendszer.; pos: right"></span></div>
-								<div class="uk-form-controls">
-									<p class="switch-wrap">
-										<label class="switch">
-											<?php $translationsValue = isset( $options['translations'] ) ? $options['translations'] : 1; ?>
-											<input id="cps_bwc_fields[translations]" name="cps_bwc_fields[translations]" type="checkbox" value="1" <?php checked( '1', $translationsValue ); ?> />
-											<span class="slider round"></span>
-										</label>
-									</p>
-								</div>
-							</div>
-
-							<?php /*
-							<h4 class="uk-heading-divider">PRO modulok</h4>
-
-							<div class="uk-margin<?php if ( CPS_BWC_PLUGIN_VERSION == 'free' || CPS_BWC_PLUGIN_LICENSE != 'valid' ) echo ' disabled'; ?>">
-								<div class="uk-form-label">Árukereső és Árgép integráció</div>
-								<div class="uk-form-controls">
-									<p class="switch-wrap">
-										<label class="switch">
-											<?php $aaintegrationValue = isset( $options['aaintegration'] ) ? $options['aaintegration'] : 1; ?>
-											<input id="cps_bwc_fields[aaintegration]" name="cps_bwc_fields[aaintegration]" type="checkbox" value="1" <?php checked( '1', $aaintegrationValue ); ?><?php if ( CPS_BWC_PLUGIN_VERSION == 'free' || CPS_BWC_PLUGIN_LICENSE != 'valid' ) echo ' disabled'; ?> />
-											<span class="slider round"></span>
-										</label>
-									</p>
-								</div>
-							</div>
-							<?php if ( CPS_BWC_PLUGIN_VERSION == 'free' || CPS_BWC_PLUGIN_LICENSE != 'valid' ) { ?>
-								<?php echo $freeNotification; ?>
-							<?php } ?>
-							*/ ?>
 						</div>
 						<div class="uk-card-footer uk-background-muted">
 							<p><input type="submit" class="uk-button uk-button-primary" value="<?php _e( 'Save Changes' ); ?>" /></p>
@@ -268,29 +185,14 @@ function cps_bwc_settings_page() {
 
 					<div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-bottom">
 						<div class="uk-card-header uk-background-muted">
-							<h3 class="uk-card-title">További beállítások a modulokhoz <a class="uk-float-right uk-margin-small-top" uk-icon="icon: more-vertical" uk-toggle="target: #modulesettings"></a></h3>
+							<h3 class="uk-card-title"><?php _e( 'Module settings', 'cps-better-woocommerce' ); ?> <a class="uk-float-right uk-margin-small-top" uk-icon="icon: more-vertical" uk-toggle="target: #modulesettings"></a></h3>
 						</div>
 						<div id="modulesettings" class="uk-card-body">
 
-							<h4 class="uk-heading-divider">Magyar formátum javítások</h4>
+							<h4 class="uk-heading-divider"><?php _e( 'Checkout page customizations', 'cps-better-woocommerce' ); ?></h4>
 
 							<div class="uk-margin">
-								<div class="uk-form-label">Megye mező elrejtése magyar cím esetén <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: Mert ezt nálunk nem szokás használni, így csak plusz felesleges lépés.; pos: right"></span></div>
-								<div class="uk-form-controls">
-									<p class="switch-wrap">
-										<label class="switch">
-											<?php $nocountyValue = isset( $options['nocounty'] ) ? $options['nocounty'] : 1; ?>
-											<input id="cps_bwc_fields[nocounty]" name="cps_bwc_fields[nocounty]" type="checkbox" value="1" <?php checked( '1', $nocountyValue ); ?> />
-											<span class="slider round"></span>
-										</label>
-									</p>
-								</div>
-							</div>
-
-							<h4 class="uk-heading-divider">Pénztár oldal</h4>
-
-							<div class="uk-margin">
-								<div class="uk-form-label">Céges számlázási adatok feltételes megjelenítése</div>
+								<div class="uk-form-label"><?php _e( 'Conditional display of Company fields', 'cps-better-woocommerce' ); ?></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
 										<label class="switch">
@@ -303,7 +205,20 @@ function cps_bwc_settings_page() {
 							</div>
 
 							<div class="uk-margin">
-								<div class="uk-form-label">Ország mező elrejtése</div>
+								<div class="uk-form-label"><?php _e( 'Tax number field', 'cps-better-woocommerce' ); ?></div>
+								<div class="uk-form-controls">
+									<p class="switch-wrap">
+										<label class="switch">
+											<?php $taxnumberValue = isset( $options['taxnumber'] ) ? $options['taxnumber'] : 0; ?>
+											<input id="cps_bwc_fields[taxnumber]" name="cps_bwc_fields[taxnumber]" type="checkbox" value="1" <?php checked( '1', $taxnumberValue ); ?> />
+											<span class="slider round"></span>
+										</label>
+									</p>
+								</div>
+							</div>
+
+							<div class="uk-margin">
+								<div class="uk-form-label"><?php _e( 'Hide Country field', 'cps-better-woocommerce' ); ?></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
 										<label class="switch">
@@ -316,7 +231,20 @@ function cps_bwc_settings_page() {
 							</div>
 
 							<div class="uk-margin">
-								<div class="uk-form-label">Rendelés jegyzetek mező elrejtése</div>
+								<div class="uk-form-label"><?php _e( 'Hide State/County field', 'cps-better-woocommerce' ); ?></div>
+								<div class="uk-form-controls">
+									<p class="switch-wrap">
+										<label class="switch">
+											<?php $nocountyValue = isset( $options['nocounty'] ) ? $options['nocounty'] : 0; ?>
+											<input id="cps_bwc_fields[nocounty]" name="cps_bwc_fields[nocounty]" type="checkbox" value="1" <?php checked( '1', $nocountyValue ); ?> />
+											<span class="slider round"></span>
+										</label>
+									</p>
+								</div>
+							</div>
+
+							<div class="uk-margin">
+								<div class="uk-form-label"><?php _e( 'Hide Order notes field', 'cps-better-woocommerce' ); ?></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
 										<label class="switch">
@@ -329,7 +257,7 @@ function cps_bwc_settings_page() {
 							</div>
 
 							<div class="uk-margin">
-								<div class="uk-form-label">Cégnév és Adószám mezők egymás mellé rendezése</div>
+								<div class="uk-form-label"><?php _e( 'Inline Company and Tax number fields', 'cps-better-woocommerce' ); ?></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
 										<label class="switch">
@@ -342,7 +270,7 @@ function cps_bwc_settings_page() {
 							</div>
 
 							<div class="uk-margin">
-								<div class="uk-form-label">Irányítószám és Város mezők egymás mellé rendezése</div>
+								<div class="uk-form-label"><?php _e( 'Inline ZIP and City fields', 'cps-better-woocommerce' ); ?></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
 										<label class="switch">
@@ -355,7 +283,7 @@ function cps_bwc_settings_page() {
 							</div>
 
 							<div class="uk-margin">
-								<div class="uk-form-label">Telefonszám és Email cím mezők egymás mellé rendezése</div>
+								<div class="uk-form-label"><?php _e( 'Inline Phone and Email fields', 'cps-better-woocommerce' ); ?></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
 										<label class="switch">
@@ -367,10 +295,10 @@ function cps_bwc_settings_page() {
 								</div>
 							</div>
 
-							<h4 class="uk-heading-divider">Vásárlás folytatása gombok</h4>
+							<h4 class="uk-heading-divider"><?php _e( 'Continue shopping buttons', 'cps-better-woocommerce' ); ?></h4>
 
 							<div class="uk-margin">
-								<div class="uk-form-label">Gomb pozíciója a Kosár oldalon</div>
+								<div class="uk-form-label"><?php _e( 'Button position on Cart page', 'cps-better-woocommerce' ); ?></div>
 								<div class="uk-form-controls">
 									<select class="uk-select" name="cps_bwc_fields[returntoshopcartposition]">
 										<?php
@@ -379,7 +307,7 @@ function cps_bwc_settings_page() {
 											$p = '';
 											$r = '';
 
-											foreach ( $returntoshop_cart_position_options as $option ) {
+											foreach ( $returntoshopcartposition_options as $option ) {
 												$label = $option['label'];
 												if ( $selected == $option['value'] ) // Make default first in list
 													$p = "\n\t<option style=\"padding-right: 10px;\" selected='selected' value='" . esc_attr( $option['value'] ) . "'>$label</option>";
@@ -393,7 +321,7 @@ function cps_bwc_settings_page() {
 							</div>
 
 							<div class="uk-margin">
-								<div class="uk-form-label">Gomb pozíciója a Pénztár oldalon</div>
+								<div class="uk-form-label"><?php _e( 'Button position on Checkout page', 'cps-better-woocommerce' ); ?></div>
 								<div class="uk-form-controls">
 									<select class="uk-select" name="cps_bwc_fields[returntoshopcheckoutposition]">
 										<?php
@@ -402,7 +330,7 @@ function cps_bwc_settings_page() {
 											$p = '';
 											$r = '';
 
-											foreach ( $returntoshop_checkout_position_options as $option ) {
+											foreach ( $returntoshopcheckoutposition_options as $option ) {
 												$label = $option['label'];
 												if ( $selected == $option['value'] ) // Make default first in list
 													$p = "\n\t<option style=\"padding-right: 10px;\" selected='selected' value='" . esc_attr( $option['value'] ) . "'>$label</option>";
@@ -416,17 +344,17 @@ function cps_bwc_settings_page() {
 							</div>
 
 							<div class="uk-margin">
-								<label class="uk-form-label" for="cps_bwc_fields[returntoshopmessage]">Üzenet szövege</label>
+								<label class="uk-form-label" for="cps_bwc_fields[returntoshopmessage]"><?php _e( 'Message text', 'cps-better-woocommerce' ); ?></label>
 								<div class="uk-form-controls">
-									<?php $returntoshopmessageValue = isset( $options['returntoshopmessage'] ) ? $options['returntoshopmessage'] : 'Szeretnél még körbenézni a webáruházunkban?'; ?>
+									<?php $returntoshopmessageValue = isset( $options['returntoshopmessage'] ) ? $options['returntoshopmessage'] : __( 'Would you like to continue shopping?', 'cps-better-woocommerce' ); ?>
 									<input id="cps_bwc_fields[returntoshopmessage]" class="uk-input" type="text" name="cps_bwc_fields[returntoshopmessage]" value="<?php echo stripslashes( $returntoshopmessageValue ); ?>" />
 								</div>
 							</div>
 
-							<h4 class="uk-heading-divider">Belépés és regisztráció utáni átirányítás</h4>
+							<h4 class="uk-heading-divider"><?php _e( 'Login and registration redirection', 'cps-better-woocommerce' ); ?></h4>
 
 							<div class="uk-margin">
-								<label class="uk-form-label" for="cps_bwc_fields[loginredirecturl]">Belépés utáni átirányítási URL <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: Abszolút URL megadása. Ha üres a mező, akkor az alapértelmezett WooCommerce átirányítás működik.; pos: right"></span></label>
+								<label class="uk-form-label" for="cps_bwc_fields[loginredirecturl]"><?php _e( 'Redirection URL after Login', 'cps-better-woocommerce' ); ?> <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: <?php _e( 'Absoulute URL path. If empty, than default WooCommerce redirection will be set.', 'cps-better-woocommerce' ); ?>; pos: right"></span></label>
 								<div class="uk-form-controls">
 									<?php $loginredirecturlValue = isset( $options['loginredirecturl'] ) ? $options['loginredirecturl'] : wc_get_page_permalink( 'shop' ); ?>
 									<input id="cps_bwc_fields[loginredirecturl]" class="uk-input" type="text" name="cps_bwc_fields[loginredirecturl]" value="<?php echo stripslashes( $loginredirecturlValue ); ?>" />
@@ -434,27 +362,27 @@ function cps_bwc_settings_page() {
 							</div>
 
 							<div class="uk-margin">
-								<label class="uk-form-label" for="cps_bwc_fields[registrationredirecturl]">Regisztráció utáni átirányítási URL <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: Abszolút URL megadása. Ha üres a mező, akkor az alapértelmezett WooCommerce átirányítás működik.; pos: right"></span></label>
+								<label class="uk-form-label" for="cps_bwc_fields[registrationredirecturl]"><?php _e( 'Redirection URL after Registration', 'cps-better-woocommerce' ); ?> <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: <?php _e( 'Absoulute URL path. If empty, than default WooCommerce redirection will be set.', 'cps-better-woocommerce' ); ?>; pos: right"></span></label>
 								<div class="uk-form-controls">
 									<?php $registrationredirecturlValue = isset( $options['registrationredirecturl'] ) ? $options['registrationredirecturl'] : wc_get_page_permalink( 'shop' ); ?>
 									<input id="cps_bwc_fields[registrationredirecturl]" class="uk-input" type="text" name="cps_bwc_fields[registrationredirecturl]" value="<?php echo stripslashes( $registrationredirecturlValue ); ?>" />
 								</div>
 							</div>
 
-							<h4 class="uk-heading-divider">Ingyenes szállítás értesítés</h4>
+							<h4 class="uk-heading-divider"><?php _e( 'Free shipping notification', 'cps-better-woocommerce' ); ?></h4>
 
 							<div class="uk-margin">
-								<label class="uk-form-label" for="cps_bwc_fields[freeshippingnoticemessage]">Üzenet szövege</label>
+								<label class="uk-form-label" for="cps_bwc_fields[freeshippingnoticemessage]"><?php _e( 'Message text', 'cps-better-woocommerce' ); ?></label>
 								<div class="uk-form-controls">
-									<?php $freeshippingnoticemessageValue = isset( $options['freeshippingnoticemessage'] ) && ( $options['freeshippingnoticemessage'] != '' ) ? $options['freeshippingnoticemessage'] : 'Az Ingyenes szállításhoz szükséges további vásárlás értéke'; ?>
+									<?php $freeshippingnoticemessageValue = isset( $options['freeshippingnoticemessage'] ) && ( $options['freeshippingnoticemessage'] != '' ) ? $options['freeshippingnoticemessage'] : __( 'The remaining amount to get FREE shipping', 'cps-better-woocommerce' ); ?>
 									<input id="cps_bwc_fields[freeshippingnoticemessage]" class="uk-input" type="text" name="cps_bwc_fields[freeshippingnoticemessage]" value="<?php echo stripslashes( $freeshippingnoticemessageValue ); ?>" />
 								</div>
 							</div>
 
-							<h4 class="uk-heading-divider">Jogi megfelelés (Fogyasztóvédelem, GDPR, ePrivacy, stb.)</h4>
+							<h4 class="uk-heading-divider"><?php _e( 'Legal compliance (GDPR, CCPA, ePrivacy)', 'cps-better-woocommerce' ); ?></h4>
 
 							<div class="uk-margin">
-								<div class="uk-form-label">IP cím mentése regisztrációkor <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: Ha szeretnéd elmenteni a vásárló IP címét, amikor regisztrál a weboldalon, kapcsold be ezt az opciót!; pos: right"></span></div>
+								<div class="uk-form-label"><?php _e( 'Save customer IP address on registration', 'cps-better-woocommerce' ); ?> <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: <?php _e( 'If enabled, the customer\'s IP address will be saved in profile after registration.' , 'cps-better-woocommerce' ); ?>; pos: right"></span></div>
 								<div class="uk-form-controls">
 									<p class="switch-wrap">
 										<label class="switch">
@@ -467,62 +395,62 @@ function cps_bwc_settings_page() {
 							</div>
 
 							<div class="uk-margin">
-								<label class="uk-form-label" for="cps_bwc_fields[regacceptpp]">Adatvédelmi tájékoztató elfogadásának a szövege a Regisztrációnál (akár linkkel) <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: Ha üres a mező, akkor ez a checkbox nem jelenik meg.; pos: right"></span></label>
+								<label class="uk-form-label" for="cps_bwc_fields[regacceptpp]"><?php _e( 'Privacy Policy checkbox text on Registration form (with HTML link, if needed)', 'cps-better-woocommerce' ); ?> <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: <?php _e( 'If empty, than this checkbox will not be displayed.', 'cps-better-woocommerce' ); ?>; pos: right"></span></label>
 								<div class="uk-form-controls">
-									<?php $regacceptppValue = isset( $options['regacceptpp'] ) ? $options['regacceptpp'] : esc_attr( 'Elolvastam és elfogadom az <a href="/adatkezeles/" target="_blank">Adatkezelési tájékoztatót</a>' ); ?>
+									<?php $regacceptppValue = isset( $options['regacceptpp'] ) ? $options['regacceptpp'] : esc_attr( __( 'I\'ve read and accept the <a href="/privacy-policy/" target="_blank">Privacy Policy</a>', 'cps-better-woocommerce' ) ); ?>
 									<textarea id="cps_bwc_fields[regacceptpp]" class="uk-textarea" cols="50" rows="5" name="cps_bwc_fields[regacceptpp]"><?php echo stripslashes( $regacceptppValue ); ?></textarea>
-									<p class="uk-text-meta">HTML használata engedélyezett</p>
+									<p class="uk-text-meta"><?php _e( 'HTML tags are allowed', 'cps-better-woocommerce' ); ?></p>
 								</div>
 							</div>
 
 							<div class="uk-margin">
-								<label class="uk-form-label" for="cps_bwc_fields[legalcheckouttitle]">Szakasz elnevezése a Pénztár oldalon <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: Ez a cím jelenik meg a checbox-ok fölött. Ha üres, akkor nem jelenik meg.; pos: right"></span></label>
+								<label class="uk-form-label" for="cps_bwc_fields[legalcheckouttitle]"><?php _e( 'Section title on Checkout page', 'cps-better-woocommerce' ); ?> <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: <?php _e( 'Title above the checkbox. If empty, than no title will be displayed.', 'cps-better-woocommerce' ); ?>; pos: right"></span></label>
 								<div class="uk-form-controls">
-									<?php $legalcheckouttitleValue = isset( $options['legalcheckouttitle'] ) ? $options['legalcheckouttitle'] : 'Vásárlással kapcsolatos megerősítések'; ?>
+									<?php $legalcheckouttitleValue = isset( $options['legalcheckouttitle'] ) ? $options['legalcheckouttitle'] : __( 'Legal confirmations', 'cps-better-woocommerce' ); ?>
 									<input id="cps_bwc_fields[legalcheckouttitle]" class="uk-input" type="text" name="cps_bwc_fields[legalcheckouttitle]" value="<?php echo stripslashes( $legalcheckouttitleValue ); ?>" />
 								</div>
 							</div>
 
 							<div class="uk-margin">
-								<label class="uk-form-label" for="cps_bwc_fields[accepttos]">Általános Szerződési Feltételek elfogadásának a szövege a Pénztár oldalon (akár linkkel) <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: Ha üres a mező, akkor ez a checkbox nem jelenik meg.; pos: right"></span></label>
+								<label class="uk-form-label" for="cps_bwc_fields[accepttos]"><?php _e( 'Terms of Service checkbox text (with HTML link, if needed)', 'cps-better-woocommerce' ); ?> <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: <?php _e( 'If empty, than this checkbox will not be displayed.', 'cps-better-woocommerce' ); ?>; pos: right"></span></label>
 								<div class="uk-form-controls">
-									<?php $accepttosValue = isset( $options['accepttos'] ) ? $options['accepttos'] : esc_attr( 'Elolvastam és elfogadom az <a href="/aszf/" target="_blank">Általános Szerződési Feltételeket</a>' ); ?>
+									<?php $accepttosValue = isset( $options['accepttos'] ) ? $options['accepttos'] : esc_attr( __( 'I\'ve read and accept the <a href="/tos/" target="_blank">Terms of Service</a>', 'cps-better-woocommerce' ) ); ?>
 									<textarea id="cps_bwc_fields[accepttos]" class="uk-textarea" cols="50" rows="5" name="cps_bwc_fields[accepttos]"><?php echo stripslashes( $accepttosValue ); ?></textarea>
-									<p class="uk-text-meta">HTML használata engedélyezett</p>
+									<p class="uk-text-meta"><?php _e( 'HTML tags are allowed', 'cps-better-woocommerce' ); ?></p>
 								</div>
 							</div>
 
 							<div class="uk-margin">
-								<label class="uk-form-label" for="cps_bwc_fields[acceptpp]">Adatvédelmi tájékoztató elfogadásának a szövege a Pénztár oldalon (akár linkkel) <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: Ha üres a mező, akkor ez a checkbox nem jelenik meg.; pos: right"></span></label>
+								<label class="uk-form-label" for="cps_bwc_fields[acceptpp]"><?php _e( 'Privacy Policy checkbox text on Checkout page (with HTML link, if needed)', 'cps-better-woocommerce' ); ?> <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: <?php _e( 'If empty, than this checkbox will not be displayed.', 'cps-better-woocommerce' ); ?>; pos: right"></span></label>
 								<div class="uk-form-controls">
-									<?php $acceptppValue = isset( $options['acceptpp'] ) ? $options['acceptpp'] : esc_attr( 'Elolvastam és elfogadom az <a href="/adatkezeles/" target="_blank">Adatkezelési tájékoztatót</a>' ); ?>
+									<?php $acceptppValue = isset( $options['acceptpp'] ) ? $options['acceptpp'] : esc_attr( __( 'I\'ve read and accept the <a href="/privacy-policy/" target="_blank">Privacy Policy</a>', 'cps-better-woocommerce' ) ); ?>
 									<textarea id="cps_bwc_fields[acceptpp]" class="uk-textarea" cols="50" rows="5" name="cps_bwc_fields[acceptpp]"><?php echo stripslashes( $acceptppValue ); ?></textarea>
-									<p class="uk-text-meta">HTML használata engedélyezett</p>
+									<p class="uk-text-meta"><?php _e( 'HTML tags are allowed', 'cps-better-woocommerce' ); ?></p>
 								</div>
 							</div>
 
 							<div class="uk-margin">
-								<label class="uk-form-label" for="cps_bwc_fields[beforeorderbuttonmessage]">Megrendelés gomb fölötti szöveg <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: A megadott szöveg a Pénztár oldalon a Megrendelés gomb fölött jelenik meg. Ha üres, akkor nem jelenik meg semmi.; pos: right"></span></label>
+								<label class="uk-form-label" for="cps_bwc_fields[beforeorderbuttonmessage]"><?php _e( 'Custom text before Place order button', 'cps-better-woocommerce' ); ?> <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: <?php _e( 'This text will be displayed just above the Place order button on Checkout page. If empty, than no text will be displayed.', 'cps-better-woocommerce' ); ?>; pos: right"></span></label>
 								<div class="uk-form-controls">
 									<?php $beforeorderbuttonmessageValue = isset( $options['beforeorderbuttonmessage'] ) ? $options['beforeorderbuttonmessage'] : null; ?>
 									<textarea id="cps_bwc_fields[beforeorderbuttonmessage]" class="uk-textarea" cols="50" rows="5" name="cps_bwc_fields[beforeorderbuttonmessage]"><?php echo stripslashes( $beforeorderbuttonmessageValue ); ?></textarea>
-									<p class="uk-text-meta">HTML használata engedélyezett</p>
+									<p class="uk-text-meta"><?php _e( 'HTML tags are allowed', 'cps-better-woocommerce' ); ?></p>
 								</div>
 							</div>
 
 							<div class="uk-margin">
-								<label class="uk-form-label" for="cps_bwc_fields[afterorderbuttonmessage]">Megrendelés gomb alatti szöveg <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: A megadott szöveg a Pénztár oldalon a Megrendelés gomb alatt jelenik meg. Ha üres, akkor nem jelenik meg semmi.; pos: right"></span></label>
+								<label class="uk-form-label" for="cps_bwc_fields[afterorderbuttonmessage]"><?php _e( 'Custom text after Place order button', 'cps-better-woocommerce' ); ?> <span uk-icon="icon: info; ratio: 1" uk-tooltip="title: <?php _e( 'This text will be displayed just under the Place order button on Checkout page. If empty, than no text will be displayed.', 'cps-better-woocommerce' ); ?>; pos: right"></span></label>
 								<div class="uk-form-controls">
 									<?php $afterorderbuttonmessageValue = isset( $options['afterorderbuttonmessage'] ) ? $options['afterorderbuttonmessage'] : null; ?>
 									<textarea id="cps_bwc_fields[afterorderbuttonmessage]" class="uk-textarea" cols="50" rows="5" name="cps_bwc_fields[afterorderbuttonmessage]"><?php echo stripslashes( $afterorderbuttonmessageValue ); ?></textarea>
-									<p class="uk-text-meta">HTML használata engedélyezett</p>
+									<p class="uk-text-meta"><?php _e( 'HTML tags are allowed', 'cps-better-woocommerce' ); ?></p>
 								</div>
 							</div>
 
 							<hr>
 
 							<div class="uk-margin">
-								<label class="uk-form-label">Megengedett HTML tagok</label>
+								<label class="uk-form-label"><?php _e( 'Allowed HTML tags', 'cps-better-woocommerce' ); ?></label>
 								<div class="uk-form-controls">
 									<pre><?php echo allowed_tags(); ?></pre>
 								</div>
@@ -551,8 +479,8 @@ function cps_bwc_settings_page() {
  * Sanitize and validate input. Accepts an array, return a sanitized array.
  */
 function cps_bwc_fields_validate( $input ) {
-	global $returntoshop_cart_position_options;
-	global $returntoshop_checkout_position_options;
+	global $returntoshopcartposition_options;
+	global $returntoshopcheckoutposition_options;
 
 	$options = get_option( 'cps_bwc_fields' );
 
@@ -578,9 +506,9 @@ function cps_bwc_fields_validate( $input ) {
 	$input['regip'] = isset( $input['regip'] ) && $input['regip'] == 1 ? 1 : 0;
 
 	// Our select option must actually be in our array of select options
-	if ( !array_key_exists( $input['returntoshopcartposition'], $returntoshop_cart_position_options ) )
+	if ( !array_key_exists( $input['returntoshopcartposition'], $returntoshopcartposition_options ) )
 		$input['returntoshopcartposition'] = 'cartactions';
-	if ( !array_key_exists( $input['returntoshopcheckoutposition'], $returntoshop_checkout_position_options ) )
+	if ( !array_key_exists( $input['returntoshopcheckoutposition'], $returntoshopcheckoutposition_options ) )
 		$input['returntoshopcheckoutposition'] = 'nocheckout';
 
 	// Say our text option must be safe text with no HTML tags

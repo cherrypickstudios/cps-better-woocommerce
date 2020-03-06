@@ -2,7 +2,7 @@
 
 function cps_bwc_continue_shopping_message_to_cart() {
 	$options = get_option( 'cps_bwc_fields' );
-	$returntoshopmessageValue = isset( $options['returntoshopmessage'] ) ? $options['returntoshopmessage'] : 'Szeretnél még körbenézni a webáruházunkban?';
+	$returntoshopmessageValue = isset( $options['returntoshopmessage'] ) ? $options['returntoshopmessage'] : __( 'Would you like to continue shopping?', 'cps-better-woocommerce' );
 	echo '<div class="woocommerce-message returntoshop">';
 	echo $returntoshopmessageValue . ' <a href="' . esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ) . '" class="button wc-forward">' . esc_html__( 'Return to shop', 'woocommerce' ) . '</a>';
 	echo '</div>';

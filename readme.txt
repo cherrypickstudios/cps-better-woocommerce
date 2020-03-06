@@ -1,10 +1,10 @@
 === CPS | Better WooCommerce ===
 Contributors: CherryPickStudios, Surbma
 Donate link: https://www.cherrypickstudios.com/
-Tags: woocommerce, magyar, magyarország, webáruház, hungarian, hungary
+Tags: woocommerce, checkout, cart, gdpr, ccpa
 Requires at least: 5.1
 Tested up to: 5.3
-Stable tag: 1.2
+Stable tag: 1.3
 Requires PHP: 5.6
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -15,173 +15,173 @@ A better WooCommerce experience with a lot of useful extras.
 
 >A better WooCommerce experience with a lot of useful extras.
 
-A WooCommerce a világ és most már Magyarország legnépszerűbb webáruház platformja is. De ez a tény a WooCommerce fejlesztőket nem érdekli annyira, hogy a magyar igényekhez igazítsák a bővítmény bizonyos funkcióit. Szerencsére adnak bőven lehetőséget a módosításokra, de ezekhez az átlag felhasználó nem ért. Ezért hoztam létre ezt a bővítményt, hogy a magyar WooCommerce webáruházak is végre rendben legyenek.
+WooCommerce is the most populat eCommerce platform in the world. It is the best eCommerce plugin for WordPress. These are all true, but how can it be better? With CPS | Better WooCommerce plugin you can add small things, that mean a lot! Enhance the overall user experience, get more conversion, increase the total sale and even comply with all the regulations (GDPR, CCPA, ePrivacy).
 
-A funkciók folyamatosan bővülnek, de mindenki megírhatja a véleményét, ötletét, hogyan tudjuk egyre jobbá tenni ezt a bővítményt.
+New features are endlessly coming to CPS | Better WooCommerce plugin. Every new feature is disabled by default (this is not Jetpack, pff!) and modules are loading only, when they are active. So this plugin is very optimized and carefully programmed with the best practices.
 
-#### HuCommerce támogatói Facebook csoport
+You can always recommend new features, as this plugin is really for you, WooCommerce users.
 
-Csatlakozzatok a HuCommerce hivatalos támogatói Facebook csoportjához, ahol lehet a bővítménnyel kapcsolatban kérdezni, beszélhgetni, ötletelni. Mindenkit szívesen látunk: [HuCommerce Facebook csoport](https://www.facebook.com/groups/HuCommerce.hu/)
+#### There is a Facebook group to support this and all CherryPick Studios Plugins
 
-### A bővítmény funkciói
+Join our official CPS Facebook group to get support, to get answers and to write new ideas, suggestions. Everyone is welcome!
 
-- Vezetéknév és keresztnév rendbetétele
-- Adószám bekérése vásárlásnál
-- Jogi megfelelés (Fogyasztóvédelem, GDPR, ePrivacy, stb.)
-- Pénztár oldal formázása
-- Megye mező elrejtése
-- Plusz/minusz mennyiségi gombok a termékekhez
-- Automatikus frissítés a Kosár oldalon
-- Vásárlás folytatása gomb megjelenítése a Kosár és/vagy a Pénztár oldalakon
-- Belépés és regisztráció utáni átirányítás
-- Ingyenes szállítás értesítés
-- Város automatikus kitöltése az irányítószám alapján
-- Fordítási hiányosságok javítása
-- WPML és Polylang kompatibilitás
-- További funkciók hamarosan...
+[CPS Facebook group](https://www.facebook.com/groups/CherryPickStudios/)
 
-#### Vezetéknév és keresztnév rendbetétele
+### Awesome features of the plugin
 
-A keresztnév és vezetéknév sorrendjének a megfordítása, ha a webáruház magyar nyelvre van állítva. Ahogy mi szeretjük. :) Mindezt úgy, hogy reszponzív nézetben is jó legyen és a CRM, számlázó programok is tudják értelmezni.
+- Tax number field at Checkout
+- Legal compliance (GDPR, CCPA, ePrivacy, etc.)
+- Checkout page customizations
+- Plus/minus quantity buttons
+- Automatic Cart update
+- Continue shopping buttons on Cart and/or Checkout pages
+- Login and registration redirection
+- Free shipping notification
+- WPML and Polylang compatibility
+- More features are coming...
 
-A megjelenítés kompatibilis a WPML bővítménnyel, így többnyelvű webáruháznál is magyar sorrendben jelenik meg a név, ha magyar nyelven nézik a webáruházat a látogatók.
+#### Tax number field at Checkout
 
-A név sorrendje a megrendelés visszaigazolásánál, a vásárló fiókjában és az értesítő levelekben is jól jelenik meg.
+You can show a new Tax number field under Company field on Checkout page. The Tax number field will be shown only, if Company field is not empty. In this case, the Tax number field will be always required. This field value will be saved in customer's profile for future use. Tax number will be displayed in the confirmation emails and on the admin, when you edit the order.
 
-#### Adószám bekérése vásárlásnál
+#### Legal compliance (GDPR, CCPA, ePrivacy, etc.)
 
-A Pénztár oldalon a Cégnév mező alatt már Adószámot is be lehet kérni. Az Adószám mező csak akkor jelenik meg, ha a Cégnév mezőbe lett írva. Az adószám ebben az esetben kötelező mező. Az adószám a rendelésen kívül az adott felhasználó profil adatainál is elmentésre kerül. Az adószám megjelenik mind a visszaigazoláson, mind a rendelés szerkesztésénél, valamint az értesítő levelekben is.
+**Privacy Policy confirmation checkbox for Registration**
 
-#### Jogi megfelelés (Fogyasztóvédelem, GDPR, ePrivacy, stb.)
+Add an extra checkbox to your registration form. Visitor has to accept your Privacy Policy before registration. This is a must have in the age of personal data protection, controlled by GDPR, CCPA, ePrivacy, etc.
 
-Lehetőség van az Általános Szerződési Feltételek és az Adatkezelési tájékoztató aktív cselekvésen alapuló elfogadtatására, azaz ki kell pipálnia a vásárlónak ezek elfogadását, mielőtt a rendelést leadhatná. Az adatok a rendeléseknél kerülnek elmentésre és a rendelés szerkesztése oldalon megjelenik az elfogadott státusz. Ebben az esetben a vásárló profil adatainál nem kerül elmentésre az elfogadás, így azt bejelentkezve is minden vásárlás alkalmával el kell fogadnia.
+This field will be saved in profile data. There is also an option to save visitor's actual IP address also. The registration date will also be saved for the customer. These informations will be displayed in the admin and on Account details page, but these fields are not editable.
 
-Opcionális a két mező használata, így ha valakinek csak az egyik elfogadtatására és megerősítésére van szüksége, akkor egyik vagy másik kikapcsolható.
+**Privacy Policy and Terms of Service checkboxes for Checkout**
 
-A Pénztár oldalon a Megrendelés gomb fölött és/vagy alatt közvetlenül elhelyezhető jogi szöveg, ami esetleg fontos vagy kötelező eleme a vásárlási folyamatnak. Ilyen például a távollévők közötti szerződéshez szükséges tudomásulvétel vagy a "fizetési kötelezettséggel járó megrendelés" kötelező megjelenítése a megrendelés során.
+You can add extra checkboxes to ask for active confirmation from the customer on the Checkout page. There are two checkboxes with custom content and link. These fields are required and will be saved on the order itself. So customers need to accept it on every order, it is not a global profile data.
 
-A regisztrációs űrlapnál is kérhető az Adatkezelési Tájékoztató kötelező elfogadtatása. Ez az adat már elmentésre kerül a felhasználó profil adatainál. Külön beállítható, hogy a felhasználó IP címét is elmentse a rendszer. A regisztrációs adatokat (elfogadás ténye, regisztráció dátuma, IP cím) mind az admin felületen, mind pedig a felhasználó fiókadatainál megjeleníti, de ezek a mezők nem módosíthatók sem a felhasználók, sem az adminisztrátorok részéről.
+The two checkboxes are optional to use, so if you need only one checkbox, it can be set also.
 
->**FIGYELEM!** A webáruház jogi megfelelése az aktuális törvényeknek és adatvédelmi rendeleteknek minden esetben a webáruház tulajdonosának a felelőssége. Ez az opció nem mentesít senkit sem az alól, hogy a megfelelést felülvizsgáltassa szakértővel vagy jogásszal. A fejlesztők nem vállalnak semmilyen felelősséget a webáruház jogi megfeleléséért.
+**Extra content for Checkout page**
 
-#### Pénztár oldal formázása
+Another option is to add extra content on the Checkout page before and/or after the Place order button. This can be very useful, if your country or any other global rules force to have such required informational messages for your customers.
 
-Céges számlázási adatok feltételes megjelenítése. Ebben az esetben egy checkbox jelenik meg és ha a látogató bepipálja, akkor jelennek csak meg a céges számlázás mezői, mint például a Cégnév és Adószám.
+>**IMPORTANT!** The responsibility of actual legal and personal data protection compliance for any webshop and website is the website's owner's task and duty. Plugin options are supporting these processes and goals, but we, the developers of this plugin don't take any responsibility for your website's legal compliance. Please revise your website with a lawyer!
 
-A Cégnév és Adószám, az Irányítószám és Város, valamint a Telefonszám és Email cím mezőket nagy monitoron be lehet állítani, hogy egymás mellé kerüljenek. Az Irányítószám és Város mezők az Ország mező alatt jelennek meg közvetlenül, hogy logikusabb legyen a megjelenési sorrend.
+#### Checkout page customizations
 
-Az Ország és a Rendelés jegyzetek mezőket akár ki is lehet kapcsolni, ha ezek a mezők nem relevánsak a te webáruházadnál. Ha az Ország mezőt elrejted, akkor a Bolt beállításainál kiválasztott ország lesz alapértelmezettként beállítva megrendelésnél.
+**Conditional display of Company billing fields**
 
-#### Megye mező elrejtése
+If you enable this option, a new checkbox will be displayed on Checkout page and all Company billing fields (Company name and Tax number) will be displayed only, if checkbox is checked.
 
-Mert ezt nálunk nem szokás használni, így csak plusz felesleges lépés. De ha valakinek nagyon kell, akkor visszaállítható.
+**Inline fields to make your order form more compact**
 
-#### Plusz/minusz mennyiségi gombok a termékekhez
+The Company name and Tax number, ZIP and City, Phone and Email fields can be paired and displayed inline next to each other. So your order form will be more compact, taking less space. The fields will be stacked in mobile view.
 
-A WooCommerce alapból csak egy szám típusú mezőt használ a termékek mennyiségénél, de ez felhasználói szemmel nézve nem elég. Ez a funkció a mennyiségi mező elé és után betesz egy plusz/minusz gombot, amivel a felhasználók könnyedén tudják változtatni a mennyiséget mind a termék végoldalon, mind pedig a kosár összegzés oldalán.
+**Disable unnecessary fields**
 
-FIGYELEM! A gombok a különböző sablonoknál esetleg másképp vagy nem megfelelően jelenhetnek meg. Ez minden esetben javítható egy kis CSS segítségével. Én azon vagyok, hogy a lehető legnépszerűbb sablonoknál már automatikusan jól nézzen ki, illetve kap egy alap formázást is, hogy a legtöbb esetben megfelelő legyen, de biztosan lesznek olyan sablonok, ahol ez még így is igényel majd további CSS formázást. A bővítmény támogatás fórumában lehet ezeket jelezni, de nem tudom vállalni, hogy mindenkinek, gyorsan tudok segíteni.
+Country, State/County and Order notes fields can be hidden, if you don't need them. If Country field is hidden, the Country will be saved with the Country, that you have set in Store Address page under your WooCommerce Settings.
 
-Jelenleg ezeket a sablonokat támogatja alapból a bővítmény:
+#### Plus/minus quantity buttons
+
+Default field for product quantity is only a number field, but it is not always enough for the visitor. This feature will put plus and minus buttons before and after the number field, so your visitors can easily modify the quantity of the ordered products. The buttons will be displayed on the Product page and on the Cart page also.
+
+IMPORTANT! The display of the buttons depends on the theme and plugins, that you use on your website. In most cases it can be fixed with a little CSS. We are making this plugin compatible with the most popular themes and it has a basic styling to fit for most themes, but it can not fit for all themes. Please let me know if your theme is not compatible, but I can not promise if or when do I fix it for that particular theme.
+
+These themes are supported by default:
 
 - Storefront
 - Divi
 - Avada
 
-#### Automatikus frissítés a Kosár oldalon
+#### Automatic Cart update
 
-A Kosár oldalon a termékek mennyiségének a módosításakor nincs szükség a "Kosár frissítése" gomb megnyomására a darabszám módosítása után, mert így automatikusan frissül a Kosár tartalma.
+There is no need to update cart on Cart page, when customers modify the quantity of any products. With this feature the Cart will be automatically updated after every quantity change.
 
-#### Vásárlás folytatása gomb megjelenítése a Kosár és/vagy a Pénztár oldalakon
+#### Continue shopping buttons on Cart and/or Checkout pages
 
-A Kosár és a Pénztár oldalakon megjeleníthető egy plusz Vásárlás folytatása gomb, ami az üzlet oldalra viszi a látogatókat, hogy esetleg még tovább válogassanak a termékek között. Sokszor csak kíváncsiságból kattintanak a látogatók a Kosár gombra, de még nem fejezték be a vásárlásukat.
+Show extra Continue shopping buttons on Cart and/or Checkout pages. The buttons target page is your Shop page. A lot of times, customers are clicking on the Cart, but still want to continue the shopping.
 
-A gombok pozíciója mind a Kosár, mind a Pénztár oldalon beállítható, valamint van lehetőség egyedi üzenet megjelenítésére is bizonyos pozíciókban.
+Button positions can be set and custom messages also can be added.
 
-#### Belépés és regisztráció utáni átirányítás
+#### Login and registration redirection
 
-Beállítható, hogy a látogatók a belépés és regisztráció után a meghatározott oldalra legyenek automatikusan átirányítva. A belépéshez és regisztrációhoz külön-külön állítható be a cél URL. A Pénztár oldalon nem veszi figyelembe az egyedi beállítást, hogy ott ne zavarja a vásárlás befejezését.
+Set custom redirection for your registration and/or login, so your customers will land on any desired URL. The registration and login redirect target URLs can be different. On Checkout page, the redirection is not active.
 
-#### Ingyenes szállítás értesítés
+#### Free shipping notification
 
-A Kosár oldalon kijelzi, hogy mennyi vásárlási összeg hiányzik még az ingyenes szállításhoz. A szöveg módosítható és többnyelvűsíthető.
+Show a notification on the Cart page to let your customers know, how much they need to spend to get FREE shipping in your webshop. This is a very effective marketing technique and upsell strategy. Notification text can be edited and translated if you have a multilingual webshop.
 
-#### Város automatikus kitöltése az irányítószám alapján
+#### WPML and Polylang compatibility
 
-A Pénztár oldalon az irányítószám mező kitöltése után automatikusan megjeleníti a várost. Ha már manuálisan lett módosítva a város, akkor nem módosítja az irányítószám alapján.
+The plugin is comaptible with WPML and Polylang plugins, so fields and other texts can be translated by these multilingual plugins.
 
-Vannak olyan irányítószámok, amikkel nem működik, mert vagy még hiányzik az indexből vagy egy irányítószám több településhez is tartozik. Igyekszem az ilyen hiányosságokat javítani.
+### About CherryPick Studios & Surbma
 
-#### Fordítási hiányosságok javítása
+#### Do you want to contribute in the development of this plugin?
 
-Ideiglenes fordítási hiányosságok javítása, amíg a hivatalos fordításban esetleg nem jelenik meg vagy nem frissíti a rendszer. Én hivatalos szerkesztője is vagyok a magyar WooCommerce fordítási csapatának, ezért ott sokmindent megcsinálok, de néha szükség van erre a kis trükkre.
+You can find the plugin source code on GitHub:
 
-#### WPML és Polylang kompatibilitás
+- [https://github.com/CherryPickStudios/cps-framework](https://github.com/CherryPickStudios/cps-framework)
 
-A szöveges mezők kompatibilisek a WPML, Polylang bővítményekkel, így azok beállíthatók a különböző nyelveken is.
+#### More projects on GitHub:
 
-### Egyéb fejlesztői infók
-
-#### Szeretnél résztvenni vagy segíteni a bővítmény fejlesztésében?
-
-Megtalálod a teljes forráskódot a GitHub-on:
-[https://github.com/CherryPickStudios/surbma-magyar-woocommerce](https://github.com/CherryPickStudios/surbma-magyar-woocommerce)
-
-#### További bővítményeket és projekteket is találsz a GitHub oldalainkon:
-
+- [CherryPick Studios GitHub](https://github.com/CherryPickStudios)
 - [Surbma GitHub](https://github.com/Surbma)
-- [Cherry Pick Studios GitHub](https://github.com/CherryPickStudios)
 
-Nyugodtan segíthetsz a bővítmények, sablonok és egyéb projektek fejlesztésében.
+You are welcome to contribute to our free softwares.
 
-#### Szeretnél többet tudni rólunk és a szolgáltatásainkról?
+#### Want to know more about us?
 
-Nézd meg a weboldalunkat: [HuCommerce.hu](https://www.hucommerce.hu/)
+Check our websites:
+
+- [CherryPickStudios.com](https://www.cherrypickstudios.com/)
+- [Surbma.com](https://surbma.com/)
+
+#### Do you like and use our free plugins?
+
+You can donate us for FREE here: [Surbma.com/Donate/](https://surbma.com/donate/)
 
 == Installation ==
 
-### Automatikus telepítés
+### Automatic installation
 
-1. A "Bővítmények -> Új hozzáadása" menüpont alatt keress rá a *HuCommerce | Magyar WooCommerce kiegészítések* bővítményre.
-2. A bővítmény dobozában kattints a "Telepítés most" gombra.
-3. Telepítés után ugyanebben a dobozban kattints a "Bekapcsol" gombra, hogy aktiváld a *HuCommerce | Magyar WooCommerce kiegészítések* bővítményt.
-4. A "CPS Plugins -> HuCommerce" menüpont alatt állítsd be, hogy melyik modult szeretnéd használni.
-5. Ennyi az egész. :)
+1. Search for the plugin *CPS | Better WooCommerce* under "Plugins -> Add New" menu item.
+2. Click on the "Install Now" button in the plugin's box.
+3. After installation, click on the "Activate" button in the same box to activate *CPS | Better WooCommerce* plugin.
+4. Under the plugin's settings menu, activate the modules you want to use.
+5. That's all. :)
 
-### Manuális telepítés az admin felületen
+### Manual installation on WordPress admin
 
-1. Töltsd le a bővítményt: [HuCommerce | Magyar WooCommerce kiegészítések](https://downloads.wordpress.org/plugin/surbma-magyar-woocommerce.zip)
-2. Töltsd fel a `surbma-magyar-woocommerce.zip` fájlt a "Bővítmények -> Új hozzáadása" menüpont alatt a "Bővítmény feltöltése" gombra kattintva.
-3. Aktiváld a *HuCommerce | Magyar WooCommerce kiegészítések* bővítményt a feltöltés után.
-4. A "CPS Plugins -> HuCommerce" menüpont alatt állítsd be, hogy melyik modult szeretnéd használni.
-5. Ennyi az egész. :)
+1. Download the plugin from here: [CPS | Better WooCommerce](https://downloads.wordpress.org/plugin/cps-better-woocommerce.zip)
+2. Upload the `cps-better-woocommerce.zip` file on the "Plugins -> Add New" page by clicking on the "Upload Plugin" button.
+3. Activate the *CPS | Better WooCommerce* plugin after the upload.
+4. Under the plugin's settings menu, activate the modules you want to use.
+5. That's all. :)
 
-### Manuális telepítés FTP használatával
+### Manual installation via FTP
 
-1. Töltsd le a bővítményt: [HuCommerce | Magyar WooCommerce kiegészítések](https://downloads.wordpress.org/plugin/surbma-magyar-woocommerce.zip)
-2. Tömörítsd ki a zip fájlt a számítógépeden.
-3. Töltsd fel a `surbma-magyar-woocommerce` mappát a `/wp-content/plugins/` mappába.
-4. Aktiváld a *HuCommerce | Magyar WooCommerce kiegészítések* bővítményt a "Bővítmények" menüpont alatt a WordPress admin felületen.
-5. A "CPS Plugins -> HuCommerce" menüpont alatt állítsd be, hogy melyik modult szeretnéd használni.
-6. Ennyi az egész. :)
+1. Download the plugin from here: [CPS | Better WooCommerce](https://downloads.wordpress.org/plugin/cps-better-woocommerce.zip)
+2. Uncompress the zip file on your local computer.
+3. Upload the `cps-better-woocommerce` folder into your `/wp-content/plugins/` folder.
+4. Activate the *CPS | Better WooCommerce* plugin on the "Plugins" page.
+5. Under the plugin's settings menu, activate the modules you want to use.
+6. That's all. :)
 
 == Frequently Asked Questions ==
 
-= Hol találom a bővítmény beállításait? =
+= Where are the settings of this plugin? =
 
-A *HuCommerce | Magyar WooCommerce kiegészítések* bővítmény beállításait a "CPS Plugins -> HuCommerce" menüpont alatt éred el.
-
-= Nem cserélődtek meg a nevek a Pénztár oldalon. =
-
-Először töröld a szerver oldali és a böngésző gyorsítótárát és frissítsd az oldalt! Győződj meg róla, hogy esetleg más bővítmény nem okoz-e konfliktust! Ha a fordítást módosítottad, az is lehet probléma. Illetve a sablonok is tartalmazhatnak olyan egyedi kódokat, amivel ez a funkció felülírható.
-
-Figyelem! A nevek cseréje csak akkor történik meg, ha magyar nyelvre van állítva a webáruház.
-
-= Mit jelent az, hogy Surbma? =
-
-A vezetéknevem visszafelé. ;)
+The *CPS | Better WooCommerce* plugin settings are under the "CPS Plugins -> Better WooCommerce" menu item.
 
 == Changelog ==
+
+= 1.3 =
+
+Release date: 2020-03-06
+
+- Add english description.
+- Translate settings page and other modules.
+- Code cleaning.
+- Updated CPS SDK to 5.4 version.
+- Removed a WooCommerce template file.
 
 = 1.2 =
 

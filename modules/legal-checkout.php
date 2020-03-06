@@ -2,7 +2,7 @@
 
 function cps_bwc_legal_registration_fields() {
 	$options = get_option( 'cps_bwc_fields' );
-	$regacceptppValue = isset( $options['regacceptpp'] ) ? stripslashes( $options['regacceptpp'] ) : 'Elolvastam és elfogadom az <a href="/adatkezeles/" target="_blank">Adatkezelési tájékoztatót</a>';
+	$regacceptppValue = isset( $options['regacceptpp'] ) ? stripslashes( $options['regacceptpp'] ) : esc_attr( __( 'I\'ve read and accept the <a href="/privacy-policy/" target="_blank">Privacy Policy</a>', 'cps-better-woocommerce' ) );
 
 	if( $regacceptppValue != '' ) {
 		woocommerce_form_field( 'reg_accept_pp', array(
@@ -20,7 +20,7 @@ function cps_bwc_legal_registration_fields_validation( $errors, $username, $emai
 	$options = get_option( 'cps_bwc_fields' );
 
 	if ( !is_checkout() && isset( $options['regacceptpp'] ) && $options['regacceptpp'] != '' && !$_POST['reg_accept_pp'] )
-		$errors->add( 'reg_accept_pp_error', '<strong>Adatkezelési Tájékoztató</strong> elfogadása kötelező.' );
+		$errors->add( 'reg_accept_pp_error', __( '<strong>Privacy Policy</strong> field is required.', 'cps-better-woocommerce' ) );
 	return $errors;
 }
 add_filter( 'woocommerce_registration_errors', 'cps_bwc_legal_registration_fields_validation', 10, 3 );
@@ -57,15 +57,15 @@ add_action( 'user_register', 'cps_bwc_legal_registration_fields_update_user_meta
 
 // Let's show the registration extra user meta values in admin.
 function cps_bwc_admin_reg_user_profile_fields( $profileuser ) {
-	$regacceptpp = get_the_author_meta( 'reg_accept_pp', $profileuser->ID ) == 1 ? 'Elfogadva' : 'Nincs elfogadva';
-	$regdate = date( "r", strtotime( $profileuser->user_registered ) ) != '' ? date( "r", strtotime( $profileuser->user_registered ) ) : 'Nincs dátum eltárolva';
-	$regip = get_the_author_meta( 'reg_ip', $profileuser->ID ) != '' ? get_the_author_meta( 'reg_ip', $profileuser->ID ) : 'Nincs IP cím eltárolva';
+	$regacceptpp = get_the_author_meta( 'reg_accept_pp', $profileuser->ID ) == 1 ? __( 'Accepted', 'cps-better-woocommerce' ) : __( 'Not accepted', 'cps-better-woocommerce' );
+	$regdate = date( "r", strtotime( $profileuser->user_registered ) ) != '' ? date( "r", strtotime( $profileuser->user_registered ) ) : __( 'Date is not available', 'cps-better-woocommerce' );
+	$regip = get_the_author_meta( 'reg_ip', $profileuser->ID ) != '' ? get_the_author_meta( 'reg_ip', $profileuser->ID ) : __( 'IP address is not available', 'cps-better-woocommerce' );
 ?>
-	<h2>Regisztrációs adatok</h2>
+	<h2><?php _e( 'Registration informations', 'cps-better-woocommerce' ); ?></h2>
 	<table class="form-table">
 		<tr>
 			<th>
-				<label for="reg_accept_pp">Adatkezelési tájékoztató</label>
+				<label for="reg_accept_pp"><?php _e( 'Privacy Policy', 'cps-better-woocommerce' ); ?></label>
 			</th>
 			<td>
 				<input type="text" name="reg_accept_pp" id="reg_accept_pp" value="<?php echo esc_attr( $regacceptpp ); ?>" class="regular-text" readonly />
@@ -73,7 +73,7 @@ function cps_bwc_admin_reg_user_profile_fields( $profileuser ) {
 		</tr>
 		<tr>
 			<th>
-				<label for="reg_date">Regisztráció időpontja</label>
+				<label for="reg_date"><?php _e( 'Registration date', 'cps-better-woocommerce' ); ?></label>
 			</th>
 			<td>
 				<input type="text" name="reg_date" id="reg_date" value="<?php echo esc_attr( $regdate ); ?>" class="regular-text" readonly />
@@ -81,7 +81,7 @@ function cps_bwc_admin_reg_user_profile_fields( $profileuser ) {
 		</tr>
 		<tr>
 			<th>
-				<label for="reg_ip">Regisztrációs IP cím</label>
+				<label for="reg_ip"><?php _e( 'Registration IP address', 'cps-better-woocommerce' ); ?></label>
 			</th>
 			<td>
 				<input type="text" name="reg_ip" id="reg_ip" value="<?php echo esc_attr( $regip ); ?>" class="regular-text" readonly />
@@ -101,23 +101,23 @@ function cps_bwc_woocommerce_reg_user_profile_fields() {
 	if ( !$user )
 		return;
 
-	$regacceptpp = get_user_meta( $user_id, 'reg_accept_pp', true ) == 1 ? 'Elfogadva' : 'Nincs elfogadva';
-	$regdate = date( "r", strtotime( $user->user_registered ) ) != '' ? date( "r", strtotime( $user->user_registered ) ) : 'Nincs dátum eltárolva';
-	$regip = get_user_meta( $user_id, 'reg_ip', true ) != '' ? get_user_meta( $user_id, 'reg_ip', true ) : 'Nincs IP cím eltárolva';
+	$regacceptpp = get_user_meta( $user_id, 'reg_accept_pp', true ) == 1 ? __( 'Accepted', 'cps-better-woocommerce' ) : __( 'Not accepted', 'cps-better-woocommerce' );
+	$regdate = date( "r", strtotime( $user->user_registered ) ) != '' ? date( "r", strtotime( $user->user_registered ) ) : __( 'Date is not available', 'cps-better-woocommerce' );
+	$regip = get_user_meta( $user_id, 'reg_ip', true ) != '' ? get_user_meta( $user_id, 'reg_ip', true ) : __( 'IP address is not available', 'cps-better-woocommerce' );
 ?>
 	<fieldset class="hc-reg-fields">
-		<legend>Regisztrációs adatok</legend>
-		<p>Ezek az információk tájékoztató jellegűek, módosítani nem lehet őket.</p>
+		<legend><?php _e( 'Registration informations', 'cps-better-woocommerce' ); ?></legend>
+		<p><?php _e( 'These fields are read-only, you can not modify them.', 'cps-better-woocommerce' ); ?></p>
 		<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-			<label for="reg_accept_pp">Adatkezelési tájékoztató:</label>
+			<label for="reg_accept_pp"><?php _e( 'Privacy Policy', 'cps-better-woocommerce' ); ?>:</label>
 			<input type="text" name="reg_accept_pp" value="<?php echo esc_attr( $regacceptpp ); ?>" class="input-text" readonly />
 		</p>
 		<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-			<label for="reg_date">Regisztráció időpontja:</label>
+			<label for="reg_date"><?php _e( 'Registration date', 'cps-better-woocommerce' ); ?>:</label>
 			<input type="text" name="reg_date" value="<?php echo esc_attr( $regdate ); ?>" class="input-text" readonly />
 		</p>
 		<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-			<label for="reg_ip">Regisztrációs IP cím:</label>
+			<label for="reg_ip"><?php _e( 'Registration IP address', 'cps-better-woocommerce' ); ?>:</label>
 			<input type="text" name="reg_ip" value="<?php echo esc_attr( $regip ); ?>" class="input-text" readonly />
 		</p>
 	</fieldset>

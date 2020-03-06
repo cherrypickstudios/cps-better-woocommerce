@@ -1,7 +1,7 @@
 <?php
 
 // CPS SDK Version.
-$this_sdk_version = '5.3';
+$this_sdk_version = '5.4';
 
 define( 'CPS_DIR', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'CPS_URL', plugins_url( '', __FILE__ ) );
@@ -28,23 +28,23 @@ function cps_admin_header( $plugin_file = '' ) {
 	if( $plugin_file != '' ) {
 		$plugin_data = get_plugin_data( $plugin_file );
 		$plugin_name = $plugin_data['Name'];
-		$headertitle = $plugin_name . ' <span>by Cherry Pick Studios</span>';
+		$headertitle = $plugin_name . ' <span>by CherryPick Studios</span>';
 	} else {
-		$headertitle = 'Cherry Pick Studios <span>WordPress Plugins, That Just Works.</span>';
+		$headertitle = 'CherryPick Studios <span>WordPress Plugins, That Just Works.</span>';
 	}
 	$headertitle = apply_filters( 'cps_admin_header_title', $headertitle );
 	$fburl = apply_filters( 'cps_admin_header_facebook_url', 'https://www.facebook.com/groups/CherryPickStudios/' );
-	$fbtitle = apply_filters( 'cps_admin_header_facebook_title', 'Join the Cherry Pick Studios Facebook Group, where you can ask any question or ask for new features. Everybody is welcome!' );
+	$fbtitle = apply_filters( 'cps_admin_header_facebook_title', 'Join the CherryPick Studios Facebook Group, where you can ask any question or ask for new features. Everybody is welcome!' );
 	$fbbuttontext = apply_filters( 'cps_admin_header_facebook_button_text', 'Join CPS Support Group' );
 	$email = apply_filters( 'cps_admin_header_email', 'hello@cherrypickstudios.com' );
-	$emailtitle = apply_filters( 'cps_admin_header_email_title', 'Cherry Pick Studios Email Support' );
+	$emailtitle = apply_filters( 'cps_admin_header_email_title', 'CherryPick Studios Email Support' );
 	$website = apply_filters( 'cps_admin_header_website', 'https://www.cherrypickstudios.com/' );
-	$websitetitle = apply_filters( 'cps_admin_header_website_title', 'Cherry Pick Studios Website' );
+	$websitetitle = apply_filters( 'cps_admin_header_website_title', 'CherryPick Studios Website' );
 	$textDomain = apply_filters( 'cps_admin_header_textdomain', 'cps-sdk' );
 	?><nav class="uk-navbar-container uk-margin" id="cps-header" uk-navbar>
 		<div class="uk-navbar-left">
 			<div class="uk-navbar-item uk-logo">
-				<img src="<?php echo CPS_URL; ?>/assets/images/cps-logo.svg" alt="Cherry Pick Studios">
+				<img src="<?php echo CPS_URL; ?>/assets/images/cps-logo.svg" alt="CherryPick Studios">
 				<div><?php echo $headertitle ?></div>
 			</div>
 		</div>
@@ -75,7 +75,7 @@ function cps_admin_footer( $plugin_file = '' ) {
 	    	<div class="uk-text-center">
 				<p>
 					<strong><a class="uk-link-reset" href="<?php echo $plugin_pluginURI; ?>" target="_blank"><?php echo $plugin_name; ?></a></strong> - v.<?php echo $plugin_version; ?><br>
-					Made with &hearts; by <img src="https://www.cherrypickstudios.com/cps-logo/?url=<?php echo urlencode( $home_url ); ?>&plugin=<?php echo urlencode( $plugin_name ); ?>&ver=<?php echo urlencode( $plugin_version ); ?>&wpver=<?php echo urlencode( $wp_version ); ?>&php=<?php echo urlencode( $php ); ?>" alt="Cherry Pick Studios" width="20"> <a class="uk-link-reset" href="https://www.cherrypickstudios.com" target="_blank">Cherry Pick Studios</a>
+					Made with &hearts; by <img src="https://www.cherrypickstudios.com/cps-logo/?url=<?php echo urlencode( $home_url ); ?>&plugin=<?php echo urlencode( $plugin_name ); ?>&ver=<?php echo urlencode( $plugin_version ); ?>&wpver=<?php echo urlencode( $wp_version ); ?>&php=<?php echo urlencode( $php ); ?>" alt="CherryPick Studios" width="20"> <a class="uk-link-reset" href="https://www.cherrypickstudios.com" target="_blank">CherryPick Studios</a>
 				</p>
 			</div>
 		</div><?php
@@ -83,7 +83,7 @@ function cps_admin_footer( $plugin_file = '' ) {
 		?><div class="uk-section uk-section-small">
 	    	<div class="uk-text-center">
 				<p>
-					Made with &hearts; by <img src="https://www.cherrypickstudios.com/cps-logo/?url=<?php echo urlencode( $home_url ); ?>&plugin=&ver=&wpver=<?php echo urlencode( $wp_version ); ?>&php=<?php echo urlencode( $php ); ?>" alt="Cherry Pick Studios" width="20"> <a class="uk-link-reset" href="https://www.cherrypickstudios.com" target="_blank">Cherry Pick Studios</a>
+					Made with &hearts; by <img src="https://www.cherrypickstudios.com/cps-logo/?url=<?php echo urlencode( $home_url ); ?>&plugin=&ver=&wpver=<?php echo urlencode( $wp_version ); ?>&php=<?php echo urlencode( $php ); ?>" alt="CherryPick Studios" width="20"> <a class="uk-link-reset" href="https://www.cherrypickstudios.com" target="_blank">CherryPick Studios</a>
 				</p>
 			</div>
 		</div><?php

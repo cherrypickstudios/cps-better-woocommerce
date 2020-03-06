@@ -57,14 +57,14 @@ add_filter( 'woocommerce_checkout_get_value', 'cps_bwc_checkout_field_values', 1
 function cps_bwc_checkout_filter_default_address_fields( $address_fields ) {
 	$options = get_option( 'cps_bwc_fields' );
 
-	// Put Postcode and City fields before Address fields
-	$address_fields['postcode']['priority'] = 42;
-	$address_fields['city']['priority'] = 44;
-
 	$postcodecitypairValue = isset( $options['postcodecitypair'] ) ? $options['postcodecitypair'] : 0;
 	if ( $postcodecitypairValue == 1 ) {
-		$address_fields['postcode']['class'] = array( 'form-row-first' );
-		$address_fields['city']['class'] = array( 'form-row-last' );
+		$address_fields['city']['class'] = array( 'form-row-first' );
+		$address_fields['postcode']['class'] = array( 'form-row-last' );
+
+		// Put Postcode and City fields before Address fields
+		$address_fields['postcode']['priority'] = 72;
+		// $address_fields['city']['priority'] = 44;
 	}
 
 	// Remove Billing country field
@@ -75,6 +75,13 @@ function cps_bwc_checkout_filter_default_address_fields( $address_fields ) {
 		unset( $address_fields['country'] );
 	}
 	*/
+
+	// Remove Billing country field
+	$nocountyValue = isset( $options['nocounty'] ) ? $options['nocounty'] : 0;
+	if ( $nocountyValue == 1 ) {
+		$address_fields['state']['required'] = false;
+		unset( $address_fields['state'] );
+	}
 
 	return $address_fields;
 }

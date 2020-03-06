@@ -35,26 +35,25 @@ function cps_bwc_admin_sidebar() {
 	?><div uk-sticky="offset: 42; bottom: #bottom">
 	<div class="uk-card uk-card-small uk-card-default uk-card-hover">
 		<div class="uk-card-header uk-background-muted">
-			<h3 class="uk-card-title">Információk <a class="uk-float-right uk-margin-small-top" uk-icon="icon: more-vertical" uk-toggle="target: #informations"></a></h3>
+			<h3 class="uk-card-title"><?php _e( 'Informations', 'cps-better-woocommerce' ); ?> <a class="uk-float-right uk-margin-small-top" uk-icon="icon: more-vertical" uk-toggle="target: #informations"></a></h3>
 		</div>
 		<div id="informations" class="uk-card-body">
-			<p>Iratkozz fel a HuCommerce hírlevélre, amiben a legújabb funkciókról, akciókról és különleges ajánlatainkról írunk.</p>
-			<p><a class="uk-button uk-button-danger uk-button-large uk-width-1-1" href="https://hucommerce.us20.list-manage.com/subscribe?u=8e6a039140be449ecebeb5264&id=2f5c70bc50&EMAIL=<?php echo urlencode( $current_user->user_email ); ?>&FNAME=<?php echo urlencode( $current_user->user_firstname ); ?>&LNAME=<?php echo urlencode( $current_user->user_lastname ); ?>&URL=<?php echo urlencode( $home_url ); ?>" target="_blank"><span uk-icon="mail"></span> Hírlevél feliratkozás</a></p>
-			<h4 class="uk-heading-divider">Bővítmény linkek</h4>
+			<p><?php _e( 'Subscribe to our newsletter to get the latest news and offers!', 'cps-better-woocommerce' ); ?></p>
+			<p><a class="uk-button uk-button-danger uk-button-large uk-width-1-1" href="https://hucommerce.us20.list-manage.com/subscribe?u=8e6a039140be449ecebeb5264&id=2f5c70bc50&EMAIL=<?php echo urlencode( $current_user->user_email ); ?>&FNAME=<?php echo urlencode( $current_user->user_firstname ); ?>&LNAME=<?php echo urlencode( $current_user->user_lastname ); ?>&URL=<?php echo urlencode( $home_url ); ?>" target="_blank"><span uk-icon="mail"></span> <?php _e( 'Join CPS Newsletter', 'cps-better-woocommerce' ); ?></a></p>
+			<h4 class="uk-heading-divider"><?php _e( 'Plugin links', 'cps-better-woocommerce' ); ?></h4>
 			<ul class="uk-list">
-				<li><a href="https://wordpress.org/support/plugin/cps-better-woocommerce" target="_blank">Hivatalos támogató fórum</a></li>
-				<li><a href="https://hu.wordpress.org/plugins/cps-better-woocommerce/#reviews" target="_blank">Olvasd el az értékeléseket (5/5 csillag)</a></li>
+				<li><a href="https://wordpress.org/support/plugin/cps-better-woocommerce" target="_blank"><?php _e( 'Official support forum', 'cps-better-woocommerce' ); ?></a></li>
+				<li><a href="https://hu.wordpress.org/plugins/cps-better-woocommerce/#reviews" target="_blank"><?php _e( 'Read our reviews', 'cps-better-woocommerce' ); ?></a></li>
 			</ul>
 			<hr>
 			<p>
-				<strong>Tetszik a bővítmény? Kérlek értékeld 5 csillaggal:</strong>
-				 <a href="https://wordpress.org/support/plugin/cps-better-woocommerce/reviews/#new-post" target="_blank">Új értékelés létrehozása</a>
+				<strong><?php _e( 'Do you like this plugin? Please give a 5 star review:', 'cps-better-woocommerce' ); ?></strong>
+				 <a href="https://wordpress.org/support/plugin/cps-better-woocommerce/reviews/#new-post" target="_blank"><?php _e( 'Write a new review', 'cps-better-woocommerce' ); ?></a>
 			</p>
-			<h4 class="uk-heading-divider">Tervezett funkciók</h4>
+			<h4 class="uk-heading-divider"><?php _e( 'Coming features', 'cps-better-woocommerce' ); ?></h4>
 			<ul class="uk-list">
-				<li><span uk-icon="icon: check; ratio: 0.8"></span> Webáruházak kötelező jogi megfelelésének a technikai biztosítása.</li>
-				<li><span uk-icon="icon: check; ratio: 0.8"></span> Globális adatok, amiket shortcode-dal lehet bárhol megjeleníteni.</li>
-				<li><span uk-icon="icon: check; ratio: 0.8"></span> Köszönő oldal egyedi módosítási lehetősége.</li>
+				<li><span uk-icon="icon: check; ratio: 0.8"></span> Global variables, that can be displayed everywhere with simple shortcodes.</li>
+				<li><span uk-icon="icon: check; ratio: 0.8"></span> Custom Thank you page.</li>
 			</ul>
 			<?php /*
 			<h4 class="uk-heading-divider">Szerezd meg a PRO verziót</h4>
@@ -99,11 +98,11 @@ function cps_bwc_admin_notice__welcome() {
 	<div data-dismissible="cps-bwc-notice-welcome-forever" class="notice notice-info is-dismissible">
 		<div style="padding: 20px;">
 			<img src="<?php echo CPS_BWC_PLUGIN_URL; ?>/assets/images/cps-bwc-logo.png" alt="CPS | Better WooCommerce" height="100" style="max-height: 100px;">
-			<p><strong><?php _e( 'Thank you for installing Better WooCommerce plugin!' ); ?></strong></p>
-			<p><?php _e( 'First step is to activate Better WooCommerce modules and set the individual module settings.' ); ?>
-			<br><?php _e( 'To activate the Better WooCommerce modules and adjust settings, go to this page' ); ?>: <a href="<?php admin_url(); ?>admin.php?page=cps-bwc-menu"><?php _e( 'CPS Plugins -> Better WooCommerce' ); ?></a></p>
-			<p><?php _e( '<strong>IMPORTANT!</strong> This notification will not show up again after you close it. Before do this, please subscribe to our newsletter and join the CPS Facebook group!' ); ?></p>
-			<p><a href="https://cherrypickstudios.us19.list-manage.com/subscribe?u=b132c87c5a57f861f7d81620e&id=27c28e2aca&EMAIL=<?php echo urlencode( $current_user->user_email ); ?>&FNAME=<?php echo urlencode( $current_user->user_firstname ); ?>&LNAME=<?php echo urlencode( $current_user->user_lastname ); ?>&URL=<?php echo urlencode( $home_url ); ?>" target="_blank" class="button button-secondary"><span class="dashicons dashicons-email" style="position: relative;top: 3px;left: -3px;"></span> <?php _e( 'Join CPS Newsletter' ); ?></a> <a href="https://www.facebook.com/groups/HuCommerce.hu/" target="_blank" class="button button-primary"><span class="dashicons dashicons-facebook-alt" style="position: relative;top: 3px;left: -3px;"></span> <?php _e( 'CPS Facebook group' ); ?></a></p>
+			<p><strong><?php _e( 'Thank you for installing Better WooCommerce plugin!', 'cps-better-woocommerce' ); ?></strong></p>
+			<p><?php _e( 'First step is to activate Better WooCommerce modules and set the individual module settings.', 'cps-better-woocommerce' ); ?>
+			<br><?php _e( 'To activate the Better WooCommerce modules and adjust settings, go to this page', 'cps-better-woocommerce' ); ?>: <a href="<?php admin_url(); ?>admin.php?page=cps-bwc-menu"><?php _e( 'CPS Plugins -> Better WooCommerce' ); ?></a></p>
+			<p><?php _e( '<strong>IMPORTANT!</strong> This notification will not show up again after you close it. Before do this, please subscribe to our newsletter and join the CPS Facebook group!', 'cps-better-woocommerce' ); ?></p>
+			<p><a href="https://cherrypickstudios.us19.list-manage.com/subscribe?u=b132c87c5a57f861f7d81620e&id=27c28e2aca&EMAIL=<?php echo urlencode( $current_user->user_email ); ?>&FNAME=<?php echo urlencode( $current_user->user_firstname ); ?>&LNAME=<?php echo urlencode( $current_user->user_lastname ); ?>&URL=<?php echo urlencode( $home_url ); ?>" target="_blank" class="button button-secondary"><span class="dashicons dashicons-email" style="position: relative;top: 3px;left: -3px;"></span> <?php _e( 'Join CPS Newsletter', 'cps-better-woocommerce' ); ?></a> <a href="https://www.facebook.com/groups/HuCommerce.hu/" target="_blank" class="button button-primary"><span class="dashicons dashicons-facebook-alt" style="position: relative;top: 3px;left: -3px;"></span> <?php _e( 'CPS Facebook group', 'cps-better-woocommerce' ); ?></a></p>
 		</div>
 	</div>
 	<?php
