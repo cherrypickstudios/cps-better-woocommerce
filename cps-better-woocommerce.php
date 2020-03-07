@@ -5,24 +5,25 @@ Plugin Name: CPS | Better WooCommerce
 Plugin URI: https://www.cherrypickstudios.com/plugins/better-woocommerce/
 Description: A better WooCommerce experience with a lot of useful extras.
 
-Version: 1.9
+Version: 1.10
 
 Author: CherryPickStudios
 Author URI: https://www.cherrypickstudios.com/
 
 License: GPLv2
 
-WC requires at least: 3.6
-WC tested up to: 3.9
-
 Text Domain: cps-better-woocommerce
 Domain Path: /languages/
+
+WooCommerce options
+WC requires at least: 3.6
+WC tested up to: 3.9
 */
 
 // Prevent direct access
 defined( 'ABSPATH' ) || exit;
 
-define( 'CPS_BWC_PLUGIN_VERSION_NUMBER', '1.9' );
+define( 'CPS_BWC_PLUGIN_VERSION_NUMBER', '1.10' );
 define( 'CPS_BWC_PLUGIN_DIR', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'CPS_BWC_PLUGIN_URL', plugins_url( '', __FILE__ ) );
 define( 'CPS_BWC_PLUGIN_FILE', __FILE__ );
