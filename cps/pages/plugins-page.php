@@ -9,7 +9,9 @@ function cps_plugins_page() {
 		<p class="uk-text-center uk-margin-remove-top uk-margin-large-bottom">If you like Surbma & Cherry Pick Studios plugins, take a look at our other plugins! <br>We are sure, you will find useful solutions for your website.</p>
 		<div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-3@l" uk-grid="masonry: false;" uk-height-match="target: > div > .uk-card > .uk-card-body">
 		<?php
-			$json = file_get_contents( 'https://www.cherrypickstudios.com/cps-plugins.json' );
+			$response = wp_remote_get( 'https://www.cherrypickstudios.com/cps-plugins.json' );
+			if( is_wp_error( $response ) ) return false;
+			$json = wp_remote_retrieve_body( $response );
 			$plugins = json_decode( $json, true );
 
 			foreach ( $plugins as $plugin ) {
