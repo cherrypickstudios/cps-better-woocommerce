@@ -1,7 +1,7 @@
 <?php
 
 // CPS SDK Version.
-$this_sdk_version = '5.7';
+$this_sdk_version = '5.8';
 
 define( 'CPS_DIR', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'CPS_URL', plugins_url( '', __FILE__ ) );
@@ -63,29 +63,22 @@ function cps_admin_header( $plugin_file = '' ) {
 }
 
 function cps_admin_footer( $plugin_file = '' ) {
-	$home_url = get_option( 'home' );
-	$wp_version = get_bloginfo( 'version' );
-	$php = phpversion();
 	if( $plugin_file != '' ) {
 		$plugin_data = get_plugin_data( $plugin_file );
 		$plugin_version = $plugin_data['Version'];
 		$plugin_name = $plugin_data['Name'];
 		$plugin_pluginURI = $plugin_data['PluginURI'];
-		?><div class="uk-section uk-section-small">
-	    	<div class="uk-text-center">
-				<p>
-					<strong><a class="uk-link-reset" href="<?php echo $plugin_pluginURI; ?>" target="_blank"><?php echo $plugin_name; ?></a></strong> - v.<?php echo $plugin_version; ?><br>
-					Made with &hearts; by <img src="https://www.cherrypickstudios.com/cps-logo/?url=<?php echo urlencode( $home_url ); ?>&plugin=<?php echo urlencode( $plugin_name ); ?>&ver=<?php echo urlencode( $plugin_version ); ?>&wpver=<?php echo urlencode( $wp_version ); ?>&php=<?php echo urlencode( $php ); ?>" alt="CherryPick Studios" width="20"> <a class="uk-link-reset" href="https://www.cherrypickstudios.com" target="_blank">CherryPick Studios</a>
-				</p>
-			</div>
-		</div><?php
-	} else {
-		?><div class="uk-section uk-section-small">
-	    	<div class="uk-text-center">
-				<p>
-					Made with &hearts; by <img src="https://www.cherrypickstudios.com/cps-logo/?url=<?php echo urlencode( $home_url ); ?>&plugin=&ver=&wpver=<?php echo urlencode( $wp_version ); ?>&php=<?php echo urlencode( $php ); ?>" alt="CherryPick Studios" width="20"> <a class="uk-link-reset" href="https://www.cherrypickstudios.com" target="_blank">CherryPick Studios</a>
-				</p>
-			</div>
-		</div><?php
 	}
+?>
+<div class="uk-section uk-section-small">
+	<div class="uk-text-center">
+		<p>
+			<?php if( $plugin_file != '' ) { ?>
+			<strong><a class="uk-link-reset" href="<?php echo $plugin_pluginURI; ?>" target="_blank"><?php echo $plugin_name; ?></a></strong> - v.<?php echo $plugin_version; ?><br>
+			<?php } ?>
+			Made with &hearts; by <img src="<?php echo CPS_URL; ?>/assets/images/cps-logo.svg" alt="CherryPick Studios" width="20"> <a class="uk-link-reset" href="https://www.cherrypickstudios.com" target="_blank">CherryPick Studios</a>
+		</p>
+	</div>
+</div>
+<?php
 }
