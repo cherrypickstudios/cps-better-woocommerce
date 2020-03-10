@@ -4,7 +4,7 @@ Donate link: https://www.cherrypickstudios.com/
 Tags: woocommerce, checkout, cart, gdpr, ccpa
 Requires at least: 5.1
 Tested up to: 5.3
-Stable tag: 1.11
+Stable tag: 1.12
 Requires PHP: 5.6
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -175,7 +175,13 @@ The *CPS | Better WooCommerce* plugin settings are under the "CPS Plugins -> Bet
 
 = 1.11 =
 
-Release date: 2020-03-07
+Release date: 2020-03-10
+
+- Updated CPS SDK to 5.9 version.
+
+= 1.11 =
+
+Release date: 2020-03-09
 
 - Updated CPS SDK to 5.8 version.
 

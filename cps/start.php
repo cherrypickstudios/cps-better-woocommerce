@@ -1,7 +1,7 @@
 <?php
 
 // CPS SDK Version.
-$this_sdk_version = '5.8';
+$this_sdk_version = '5.9';
 
 define( 'CPS_DIR', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'CPS_URL', plugins_url( '', __FILE__ ) );
@@ -17,7 +17,6 @@ if ( is_admin() ) {
 
 // Custom styles and scripts for admin pages
 function cps_admin_scripts() {
-	wp_enqueue_script( 'freemius-checkout-js', 'https://checkout.freemius.com/checkout.min.js', array( 'jquery' ), '2.3.0' );
 	wp_enqueue_script( 'uikit-js', CPS_URL . '/vendors/uikit/js/uikit.min.js', array( 'jquery' ), '3.1.6' );
 	wp_enqueue_script( 'uikit-icons', CPS_URL . '/vendors/uikit/js/uikit-icons.min.js', array( 'jquery' ), '3.1.6' );
 	wp_enqueue_style( 'uikit-css', CPS_URL . '/vendors/uikit/css/uikit.min.css', false, '3.1.6' );
