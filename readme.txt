@@ -173,7 +173,7 @@ The *CPS | Better WooCommerce* plugin settings are under the "CPS Plugins -> Bet
 
 == Changelog ==
 
-= 1.11 =
+= 1.12 =
 
 Release date: 2020-03-10
 
