@@ -4,8 +4,8 @@ Donate link: https://www.cherrypickstudios.com/
 Tags: woocommerce, checkout, cart, gdpr, ccpa
 Requires at least: 5.1
 Tested up to: 5.3
-Stable tag: 1.13
-Requires PHP: 5.6
+Stable tag: 2.0
+Requires PHP: 7.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -172,6 +172,24 @@ You can donate us for FREE here: [Surbma.com/Donate/](https://surbma.com/donate/
 The *CPS | Better WooCommerce* plugin settings are under the "CPS Plugins -> Better WooCommerce" menu item.
 
 == Changelog ==
+
+= 1.14 =
+
+Release date: 2020-03-12
+
+IMPORTANT! Only update IF you already updated WooCommerce to 4.0 or above!
+
+MODIFICATIONS
+
+- The quantity-input.php template file deleted, because WooCommerce 4.0 has added new hooks.
+- The plus/minus buttons are added with the new hooks. Compatible only with WooCommerce 4.0 or above!
+
+OTHER
+
+- Code cleaning.
+- Added plugin logo.
+- Compatibility check for WooCommerce 4.0 version.
+- Minimum PHP requirement changed to 7.0 version.
 
 = 1.13 =
 
